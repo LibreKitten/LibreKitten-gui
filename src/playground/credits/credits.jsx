@@ -64,7 +64,7 @@ const Credits = () => (
         <section>
             <p>
                 The {APP_NAME} project is made possible by TurboWarp and Scratch, thank you.
-                Without them, coding would have been less accessible to people, and people would have had to learn confusing languages with syntax errors as their first language.
+                Without them, coding would have been less accessible to people, and people would have had to learn confusing languages with syntax errors as their first programming language.
             </p>
         </section>
         <section>
