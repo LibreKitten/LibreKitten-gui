@@ -8,7 +8,6 @@ import MediaQuery from 'react-responsive';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import tabStyles from 'react-tabs/style/react-tabs.css';
 import VM from 'scratch-vm';
-import Renderer from 'scratch-render';
 
 import Blocks from '../../containers/blocks.jsx';
 import CostumeTab from '../../containers/costume-tab.jsx';
@@ -39,14 +38,15 @@ import TWFontsModal from '../../containers/tw-fonts-modal.jsx';
 
 import layout, {STAGE_SIZE_MODES} from '../../lib/layout-constants';
 import {resolveStageSize} from '../../lib/screen-utils';
+import {Theme} from '../../lib/themes';
 
 import {isRendererSupported, isBrowserSupported} from '../../lib/tw-environment-support-prober';
 
 import styles from './gui.css';
 import addExtensionIcon from './icon--extensions.svg';
-import codeIcon from './icon--code.svg';
-import costumesIcon from './icon--costumes.svg';
-import soundsIcon from './icon--sounds.svg';
+import codeIcon from '!../../lib/tw-recolor/build!./icon--code.svg';
+import costumesIcon from '!../../lib/tw-recolor/build!./icon--costumes.svg';
+import soundsIcon from '!../../lib/tw-recolor/build!./icon--sounds.svg';
 
 const messages = defineMessages({
     addExtension: {
@@ -81,9 +81,11 @@ const GUIComponent = props => {
         backdropLibraryVisible,
         backpackHost,
         backpackVisible,
+        blocksId,
         blocksTabVisible,
         cardsVisible,
         canChangeLanguage,
+        canChangeTheme,
         canCreateNew,
         canEditTitle,
         canManageFiles,
@@ -100,7 +102,6 @@ const GUIComponent = props => {
         enableCommunity,
         intl,
         isCreating,
-        isDark,
         isEmbedded,
         isFullScreen,
         isPlayerOnly,
@@ -108,6 +109,7 @@ const GUIComponent = props => {
         isShared,
         isWindowFullScreen,
         isTelemetryEnabled,
+        isTotallyNormal,
         loading,
         logo,
         renderLogin,
@@ -116,7 +118,6 @@ const GUIComponent = props => {
         onCloseAccountNav,
         onClickAddonSettings,
         onClickNewWindow,
-        onClickTheme,
         onClickPackager,
         onLogOut,
         onOpenRegistration,
@@ -144,6 +145,7 @@ const GUIComponent = props => {
         stageSizeMode,
         targetIsStage,
         telemetryModalVisible,
+        theme,
         tipsLibraryVisible,
         usernameModalVisible,
         settingsModalVisible,
@@ -270,6 +272,7 @@ const GUIComponent = props => {
                     authorThumbnailUrl={authorThumbnailUrl}
                     authorUsername={authorUsername}
                     canChangeLanguage={canChangeLanguage}
+                    canChangeTheme={canChangeTheme}
                     canCreateCopy={canCreateCopy}
                     canCreateNew={canCreateNew}
                     canEditTitle={canEditTitle}
@@ -280,6 +283,7 @@ const GUIComponent = props => {
                     className={styles.menuBarPosition}
                     enableCommunity={enableCommunity}
                     isShared={isShared}
+                    isTotallyNormal={isTotallyNormal}
                     logo={logo}
                     renderLogin={renderLogin}
                     showComingSoon={showComingSoon}
@@ -287,7 +291,6 @@ const GUIComponent = props => {
                     onClickAccountNav={onClickAccountNav}
                     onClickAddonSettings={onClickAddonSettings}
                     onClickNewWindow={onClickNewWindow}
-                    onClickTheme={onClickTheme}
                     onClickPackager={onClickPackager}
                     onClickLogo={onClickLogo}
                     onCloseAccountNav={onCloseAccountNav}
@@ -314,7 +317,7 @@ const GUIComponent = props => {
                                     <Tab className={tabClassNames.tab}>
                                         <img
                                             draggable={false}
-                                            src={codeIcon}
+                                            src={codeIcon()}
                                         />
                                         <FormattedMessage
                                             defaultMessage="Code"
@@ -328,7 +331,7 @@ const GUIComponent = props => {
                                     >
                                         <img
                                             draggable={false}
-                                            src={costumesIcon}
+                                            src={costumesIcon()}
                                         />
                                         {targetIsStage ? (
                                             <FormattedMessage
@@ -350,7 +353,7 @@ const GUIComponent = props => {
                                     >
                                         <img
                                             draggable={false}
-                                            src={soundsIcon}
+                                            src={soundsIcon()}
                                         />
                                         <FormattedMessage
                                             defaultMessage="Sounds"
@@ -362,14 +365,16 @@ const GUIComponent = props => {
                                 <TabPanel className={tabClassNames.tabPanel}>
                                     <Box className={styles.blocksWrapper}>
                                         <Blocks
+                                            key={`${blocksId}/${theme.id}`}
                                             canUseCloud={canUseCloud}
                                             grow={1}
                                             isVisible={blocksTabVisible}
                                             options={{
-                                                media: `${basePath}static/blocks-media/`
+                                                media: `${basePath}static/${theme.getBlocksMediaFolder()}/`
                                             }}
                                             stageSize={stageSize}
                                             onOpenCustomExtensionModal={onOpenCustomExtensionModal}
+                                            theme={theme}
                                             vm={vm}
                                         />
                                     </Box>
@@ -393,7 +398,6 @@ const GUIComponent = props => {
                                 <TabPanel className={tabClassNames.tabPanel}>
                                     {costumesTabVisible ? <CostumeTab
                                         vm={vm}
-                                        isDark={isDark}
                                     /> : null}
                                 </TabPanel>
                                 <TabPanel className={tabClassNames.tabPanel}>
@@ -439,7 +443,9 @@ GUIComponent.propTypes = {
     backpackVisible: PropTypes.bool,
     basePath: PropTypes.string,
     blocksTabVisible: PropTypes.bool,
+    blocksId: PropTypes.string,
     canChangeLanguage: PropTypes.bool,
+    canChangeTheme: PropTypes.bool,
     canCreateCopy: PropTypes.bool,
     canCreateNew: PropTypes.bool,
     canEditTitle: PropTypes.bool,
@@ -459,13 +465,13 @@ GUIComponent.propTypes = {
     enableCommunity: PropTypes.bool,
     intl: intlShape.isRequired,
     isCreating: PropTypes.bool,
-    isDark: PropTypes.bool,
     isEmbedded: PropTypes.bool,
     isFullScreen: PropTypes.bool,
     isPlayerOnly: PropTypes.bool,
     isRtl: PropTypes.bool,
     isShared: PropTypes.bool,
     isWindowFullScreen: PropTypes.bool,
+    isTotallyNormal: PropTypes.bool,
     loading: PropTypes.bool,
     logo: PropTypes.string,
     onActivateCostumesTab: PropTypes.func,
@@ -474,7 +480,6 @@ GUIComponent.propTypes = {
     onClickAccountNav: PropTypes.func,
     onClickAddonSettings: PropTypes.func,
     onClickNewWindow: PropTypes.func,
-    onClickTheme: PropTypes.func,
     onClickPackager: PropTypes.func,
     onClickLogo: PropTypes.func,
     onCloseAccountNav: PropTypes.func,
@@ -501,6 +506,7 @@ GUIComponent.propTypes = {
     stageSizeMode: PropTypes.oneOf(Object.keys(STAGE_SIZE_MODES)),
     targetIsStage: PropTypes.bool,
     telemetryModalVisible: PropTypes.bool,
+    theme: PropTypes.instanceOf(Theme),
     tipsLibraryVisible: PropTypes.bool,
     usernameModalVisible: PropTypes.bool,
     settingsModalVisible: PropTypes.bool,
@@ -512,7 +518,9 @@ GUIComponent.defaultProps = {
     backpackHost: null,
     backpackVisible: false,
     basePath: './',
+    blocksId: 'original',
     canChangeLanguage: true,
+    canChangeTheme: true,
     canCreateNew: false,
     canEditTitle: false,
     canManageFiles: true,
@@ -524,6 +532,7 @@ GUIComponent.defaultProps = {
     enableCommunity: false,
     isCreating: false,
     isShared: false,
+    isTotallyNormal: false,
     loading: false,
     showComingSoon: false,
     stageSizeMode: STAGE_SIZE_MODES.large
@@ -533,7 +542,9 @@ const mapStateToProps = state => ({
     customStageSize: state.scratchGui.customStageSize,
     isWindowFullScreen: state.scratchGui.tw.isWindowFullScreen,
     // This is the button's mode, as opposed to the actual current state
-    stageSizeMode: state.scratchGui.stageSize.stageSize
+    blocksId: state.scratchGui.timeTravel.year.toString(),
+    stageSizeMode: state.scratchGui.stageSize.stageSize,
+    theme: state.scratchGui.theme.theme
 });
 
 export default injectIntl(connect(

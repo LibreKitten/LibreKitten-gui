@@ -1,4 +1,4 @@
-import layout, {STAGE_DISPLAY_SCALES, STAGE_SIZE_MODES, STAGE_DISPLAY_SIZES} from '../lib/layout-constants';
+import {STAGE_DISPLAY_SCALES, STAGE_SIZE_MODES, STAGE_DISPLAY_SIZES} from '../lib/layout-constants';
 
 const maxScaleParam = typeof URLSearchParams !== 'undefined' && new URLSearchParams(location.search).get('scale');
 
@@ -15,7 +15,7 @@ const STAGE_DIMENSION_DEFAULTS = {
     // referencing css/units.css,
     // spacingBorderAdjustment = 2 * $full-screen-top-bottom-margin +
     //   2 * $full-screen-border-width
-    fullScreenSpacingBorderAdjustment: 12,
+    fullScreenSpacingBorderAdjustment: 8,
     // referencing css/units.css,
     // menuHeightAdjustment = $stage-menu-height
     menuHeightAdjustment: 44
@@ -69,6 +69,11 @@ const getStageDimensions = (stageSize, customStageSize, isFullScreen) => {
         }
 
         stageDimensions.scale = stageDimensions.width / stageDimensions.widthDefault;
+    } else if (stageSize === STAGE_DISPLAY_SIZES.small) {
+        // Small stage mode uses a fixed width
+        stageDimensions.width = STAGE_DISPLAY_SCALES[stageSize] * 480;
+        stageDimensions.scale = stageDimensions.width / stageDimensions.widthDefault;
+        stageDimensions.height = stageDimensions.scale * stageDimensions.heightDefault;
     } else {
         stageDimensions.scale = STAGE_DISPLAY_SCALES[stageSize];
         stageDimensions.height = stageDimensions.scale * stageDimensions.heightDefault;
