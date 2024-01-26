@@ -1,4 +1,4 @@
-scratch-gui modified for use in [TurboWarp](https://turbowarp.org/)
+TurboWarp's scratch-gui modified for use in [LibreKitten](https://placekitten.com/)
 
 ## Setup
 
@@ -8,7 +8,7 @@ If you just want to play with the GUI then it's the same process as upstream scr
 
 ## License
 
-TurboWarp's modifications to Scratch are licensed under the GNU General Public License v3.0. See LICENSE or https://www.gnu.org/licenses/ for details.
+LibreKitten's modifications to TurboWarp are licensed under the GNU General Public License v3.0. See LICENSE or https://www.gnu.org/licenses/ for details.
 
 The following is the original license for scratch-gui, which we are required to retain. This is NOT the license of this project.
 
