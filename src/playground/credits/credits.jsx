@@ -7,6 +7,8 @@ import {getInitialDarkMode} from '../../lib/tw-theme-hoc.jsx';
 
 import UserData from './users';
 
+import librekitty from './purring-librekitty-with-love-heart.svg'
+
 /* eslint-disable react/jsx-no-literals */
 
 document.documentElement.lang = 'en';
@@ -53,18 +55,30 @@ const Credits = () => (
     <main className={styles.main}>
         <header className={styles.headerContainer}>
             <h1 className={styles.headerText}>
-                TurboWarp Credits
+                LibreKitten Credits
             </h1>
         </header>
         <section>
             <p>
-                The TurboWarp project is made possible by the work of many volunteers.
+                The LibreKitten project is made possible by TurboWarp and Scratch, thank you.
+                Without them, coding would have been less accessible to people, and people would have had to learn confusing languages with syntax errors as their first language.
+            </p>
+        </section>
+        <section>
+            <h2>TurboWarp</h2>
+            <p>
+                LibreKitten is based on the work of the <a href="https://turbowarp.org/credits.html">TurboWarp contributors</a> but is not endorsed by TurboWarp in any way.
+            </p>
+            <p>
+                <a href="https://github.com/sponsors/GarboMuffin">
+                    Donate to support TurboWarp.
+                </a>
             </p>
         </section>
         <section>
             <h2>Scratch</h2>
             <p>
-                TurboWarp is based on the work of the <a href="https://scratch.mit.edu/credits">Scratch contributors</a> but is not endorsed by Scratch in any way.
+                LibreKitten & TurboWarp is based on the work of the <a href="https://scratch.mit.edu/credits">Scratch contributors</a> but is not endorsed by Scratch in any way.
             </p>
             <p>
                 <a href="https://scratch.mit.edu/donate">
@@ -79,17 +93,32 @@ const Credits = () => (
         <section>
             <h2>Translators</h2>
             <p>
-                More than 100 people have helped translate TurboWarp and its addons into many languages
-                &mdash; far more than we could hope to list here.
+                Sadly, LibreKitten is only maintained by 1 person at the time of this being written, and that person only knows English.
             </p>
         </section>
         <section>
+            <h2>Extra credits</h2>
             <p>
+                <p>
+                    Most importantly of all, you. Thank you for using LibreKitten, or at least giving it a try. We appreciate that.
+                </p>
+            </p>
+        </section>
+        <section>
+        <p>
+            <img
+                src={librekitty}
+                alt='The Librekitty (cat) purring with a love heart.'
+            />
+        </p>
+        <i>The  Librekitty purring from your usage of LibreKitten.</i>
+        <p>- The Librekitty.</p>
+        <p>
                 <i>
                     Individual contributors are listed in no particular order.
                     The order is randomized each visit.
                 </i>
-            </p>
+        </p>
         </section>
     </main>
 );

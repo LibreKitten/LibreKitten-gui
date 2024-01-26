@@ -12,6 +12,8 @@ import bottomBlock from './bottom-block.svg';
 import * as progressMonitor from './tw-progress-monitor';
 import isScratchDesktop from '../../lib/isScratchDesktop';
 
+import { tip } from '../../lib/randomUnhelpfulTip';
+
 // tw:
 // we make some rather large changes here:
 //  - remove random message, replaced with message dependent on what is actually being loaded
@@ -19,6 +21,8 @@ import isScratchDesktop from '../../lib/isScratchDesktop';
 //  - bring in intl so that we can translate everything
 // The way of doing this is extremely unusual and weird compared to how things are typically done for performance.
 // This is because react updates are too performance crippling to handle the progress bar rapidly updating.
+
+// lk: unhelpful tips added
 
 const mainMessages = {
     'gui.loader.headline': (
@@ -162,6 +166,7 @@ class LoaderComponent extends React.Component {
                             />
                         </div>
                     )}
+                    <p>{tip[Math.round(Math.random() * tip.length)]}</p>
                 </div>
             </div>
         );
