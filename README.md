@@ -1,5 +1,7 @@
 TurboWarp's scratch-gui modified for use in [LibreKitten](https://placekitten.com/), started on the 8th of January 2024.
 
+Based on [TurboWarp's source code](https://github.com/TurboWarp/scratch-gui).
+
 ## Setup
 
 See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp environment.
