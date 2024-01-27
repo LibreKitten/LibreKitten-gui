@@ -17,19 +17,19 @@ const SET_HAS_CLOUD_VARIABLES = 'tw/SET_HAS_CLOUD_VARIABLES';
 const SET_CLOUD_HOST = 'tw/SET_CLOUD_HOST';
 
 export const initialState = {
-    framerate: 30,
+    framerate: 0,
     interpolation: false,
     cloud: true,
     username: '',
-    highQualityPen: false,
+    highQualityPen: true,
     compilerOptions: {
         enabled: true,
         warpTimer: false
     },
     runtimeOptions: {
         maxClones: 300,
-        miscLimits: true,
-        fencing: true
+        miscLimits: false,
+        fencing: false
     },
     isWindowFullScreen: false,
     dimensions: [0, 0],
