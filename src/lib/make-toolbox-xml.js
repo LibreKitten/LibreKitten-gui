@@ -52,18 +52,6 @@ const motion = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
-        <block type="motion_gotoxy">
-            <value name="X">
-                <shadow id="movex" type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-            <value name="Y">
-                <shadow id="movey" type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
         <block type="motion_changexyby">
             <value name="DX">
                 <shadow id="movex" type="math_number">
@@ -73,6 +61,18 @@ const motion = function (isInitialSetup, isStage, targetId, colors) {
             <value name="DY">
                 <shadow id="movey" type="math_number">
                     <field name="NUM">15</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="motion_gotoxy">
+            <value name="X">
+                <shadow id="movex" type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="Y">
+                <shadow id="movey" type="math_number">
+                    <field name="NUM">0</field>
                 </shadow>
             </value>
         </block>
