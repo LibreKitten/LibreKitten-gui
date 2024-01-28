@@ -64,6 +64,18 @@ const motion = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
+        <block type="motion_changexyby">
+            <value name="DX">
+                <shadow id="movex" type="math_number">
+                    <field name="NUM">15</field>
+                </shadow>
+            </value>
+            <value name="DY">
+                <shadow id="movey" type="math_number">
+                    <field name="NUM">15</field>
+                </shadow>
+            </value>
+        </block>
         <block type="motion_glideto" id="motion_glideto">
             <value name="SECS">
                 <shadow type="math_number">
@@ -359,6 +371,7 @@ const events = function (isInitialSetup, isStage, targetId, colors) {
     return `
     <category name="%{BKY_CATEGORY_EVENTS}" id="events" colour="${colors.primary}" secondaryColour="${colors.tertiary}">
         <block type="event_whenflagclicked"/>
+        <block type="event_whenstopclicked"/>
         <block type="event_whenkeypressed">
         </block>
         ${isStage ? `
@@ -421,6 +434,7 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
         ${blockSeparator}
         <block type="control_if"/>
         <block type="control_if_else"/>
+        <!-- <block type="control_switch"/> -->
         <block id="wait_until" type="control_wait_until"/>
         <block id="repeat_until" type="control_repeat_until"/>
         <block id="while" type="control_while"/>
@@ -575,6 +589,18 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
             </value>
         </block>
         <block type="operator_divide">
+            <value name="NUM1">
+                <shadow type="math_number">
+                    <field name="NUM"/>
+                </shadow>
+            </value>
+            <value name="NUM2">
+                <shadow type="math_number">
+                    <field name="NUM"/>
+                </shadow>
+            </value>
+        </block>
+        <block type="operator_exponent">
             <value name="NUM1">
                 <shadow type="math_number">
                     <field name="NUM"/>
