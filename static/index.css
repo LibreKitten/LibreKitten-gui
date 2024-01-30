@@ -1,0 +1,50 @@
+:root {
+    --primary: rgba(255, 130, 0, 1);
+    --tertiary: rgba(230, 119, 0, 1);
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary);
+    height: 53px;
+}
+
+.logo {
+    padding: 8px;
+    padding-right: 8px;
+}
+
+header a {
+    padding: 16px;
+    color: white;
+}
+
+header a:hover {
+    background-color: var(--tertiary);
+}
+
+main {
+    margin: 16px;
+    text-align: center;
+}
+
+.primary_button {
+    background-color: var(--primary);
+    color: white;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.primary_button:hover {
+    background-color: var(--tertiary);
+}
+
+section {
+    padding: 8px;
+}

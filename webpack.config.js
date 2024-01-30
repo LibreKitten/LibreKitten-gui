@@ -37,7 +37,7 @@ const base = {
         // allows ROUTING_STYLE=wildcard to work properly
         historyApiFallback: {
             rewrites: [
-                {from: /^\/\d+\/?$/, to: '/index.html'},
+                {from: /^\/\d+\/projects\/?$/, to: '/projects.html'},
                 {from: /^\/\d+\/fullscreen\/?$/, to: '/fullscreen.html'},
                 {from: /^\/\d+\/editor\/?$/, to: '/editor.html'},
                 {from: /^\/\d+\/embed\/?$/, to: '/embed.html'},
@@ -186,7 +186,7 @@ module.exports = [
             }),
             new HtmlWebpackPlugin({
                 chunks: ['editor'],
-                template: 'src/playground/index.ejs',
+                template: 'src/playground/player.ejs',
                 filename: 'editor.html',
                 title: `${APP_NAME} - Run Scratch projects faster`,
                 isEditor: true,
@@ -194,14 +194,14 @@ module.exports = [
             }),
             new HtmlWebpackPlugin({
                 chunks: ['player'],
-                template: 'src/playground/index.ejs',
-                filename: 'index.html',
+                template: 'src/playground/player.ejs',
+                filename: 'projects.html',
                 title: `${APP_NAME} - Run Scratch projects faster`,
                 ...htmlWebpackPluginCommon
             }),
             new HtmlWebpackPlugin({
                 chunks: ['fullscreen'],
-                template: 'src/playground/index.ejs',
+                template: 'src/playground/player.ejs',
                 filename: 'fullscreen.html',
                 title: `${APP_NAME} - Run Scratch projects faster`,
                 ...htmlWebpackPluginCommon
