@@ -434,12 +434,27 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
         ${blockSeparator}
         <block type="control_if"/>
         <block type="control_if_else"/>
-        <!-- <block type="control_switch"/> -->
+        <block type="control_switch">
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT">hello</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="control_case">
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT">hello</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="control_break"/>
         <block id="wait_until" type="control_wait_until"/>
         <block id="repeat_until" type="control_repeat_until"/>
         <block id="while" type="control_while"/>
         ${blockSeparator}
         <block type="control_stop"/>
+        <block type="control_green_flag"/>showBlocks
         ${blockSeparator}
         ${isStage ? `
             <block type="control_create_clone_of">
@@ -668,6 +683,40 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
         <block type="operator_not"/>
         ${blockSeparator}
         ${isInitialSetup ? '' : `
+            <block type="operator_replace">
+                <value name="STRING">
+                    <shadow type="text">
+                        <field name="TEXT">I like apples.</field>
+                    </shadow>
+                </value>
+                <value name="ONE">
+                    <shadow type="text">
+                        <field name="TEXT">${apple}</field>
+                    </shadow>
+                </value>
+                <value name="TWO">
+                    <shadow type="text">
+                        <field name="TEXT">${banana}</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="operator_get_from_string">
+                <value name="STRING">
+                    <shadow type="text">
+                        <field name="TEXT">LibreKitten</field>
+                    </shadow>
+                </value>
+                <value name="ONE">
+                    <shadow type="math_whole_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+                <value name="TWO">
+                    <shadow type="math_whole_number">
+                        <field name="NUM">6</field>
+                    </shadow>
+                </value>
+            </block>
             <block type="operator_join">
                 <value name="STRING1">
                     <shadow type="text">

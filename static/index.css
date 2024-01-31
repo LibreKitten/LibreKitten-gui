@@ -41,6 +41,14 @@ main {
     padding: 16px;
 }
 
+.button {
+    background-color: rgb(196, 196, 196);
+    color: black;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+
 .primary_button:hover {
     background-color: var(--tertiary);
 }
