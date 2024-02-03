@@ -448,6 +448,7 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
+        <!-- <block type="control_default"/> -->
         <block type="control_break"/>
         <block id="wait_until" type="control_wait_until"/>
         <block id="repeat_until" type="control_repeat_until"/>
@@ -681,6 +682,9 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
         <block type="operator_and"/>
         <block type="operator_or"/>
         <block type="operator_not"/>
+        ${blockSeparator}
+        <block type="operator_true"/>
+        <block type="operator_false"/>
         ${blockSeparator}
         ${isInitialSetup ? '' : `
             <block type="operator_replace">

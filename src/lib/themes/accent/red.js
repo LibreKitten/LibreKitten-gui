@@ -1,6 +1,6 @@
 const guiColors = {
     'motion-primary': 'rgba(255, 130, 0, 1)',
-    'motion-primary-transparent': 'rgba(255, 130, 0, 0.35)',
+    'motion-primary-transparent': 'rgba(255, 130, 0, 0.9)',
     'motion-tertiary': 'rgba(230, 119, 0, 1)',
 
     'looks-secondary': 'rgba(255, 130, 0, 1)',
@@ -13,7 +13,7 @@ const guiColors = {
     'extensions-transparent': 'hsla(10, 85%, 65%, 0.35)',
     'extensions-light': 'hsla(10, 57%, 85%, 1)',
 
-    'drop-highlight': '#ff8c8c'
+    'drop-highlight': 'rgba(255, 130, 0, 1)'
 };
 
 const blockColors = {
