@@ -45,6 +45,7 @@
         much better ways to solve that (e.g. undo #2124, remove this flex-basis entirely). However, they run their own
         risks of breaking things, so let's just leave this as-is for the time being.
     */
+    margin-left: 7px;
     flex-basis: calc(1024px - 408px - (($space + $stage-standard-border-width) * 2));
     flex-grow: 1;
     flex-shrink: 0;
@@ -58,7 +59,7 @@
     height: $stage-menu-height;
     width: 250px; /* Match width of the toolbox */
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     flex-shrink: 0;
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -73,11 +74,10 @@
 }
 
 .tab {
-    flex-grow: 1;
     height: 80%;
-    margin-bottom: 0;
+    margin: 0 15px;
 
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 1rem;
     border: 1px solid $ui-black-transparent;
 
     padding: 0.125rem 1.25rem 0;
@@ -126,10 +126,8 @@
 }
 
 .tab.is-selected {
-    height: 90%;
     color: $looks-secondary;
     background-color: $ui-white;
-    z-index: 4; /* Make sure selected is always above */
 }
 
 .tab img {
@@ -242,6 +240,7 @@
     background: $looks-secondary;
 
     border: 1px solid $looks-secondary;
+    border-bottom-left-radius: $space;
     box-sizing: content-box; /* To match scratch-block vertical toolbox borders */
 }
 

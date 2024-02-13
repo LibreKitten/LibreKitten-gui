@@ -8,11 +8,11 @@
     background: $assets-background;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.85rem;
+    overflow: hidden;
 }
 
 [dir="ltr"] .wrapper {
-    border-top-right-radius: $space;
-    border-bottom-right-radius: $space;
+    border-radius: $space;
 }
 
 [dir="rtl"] .wrapper {

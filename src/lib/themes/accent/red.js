@@ -1,11 +1,11 @@
 const guiColors = {
-    'motion-primary': 'rgba(255, 130, 0, 1)',
-    'motion-primary-transparent': 'rgba(255, 130, 0, 0.9)',
-    'motion-tertiary': 'rgba(230, 119, 0, 1)',
+    'motion-primary': '#ff4c4c',
+    'motion-primary-transparent': '#ff4c4ce6',
+    'motion-tertiary': '#cc3333',
 
-    'looks-secondary': 'rgba(255, 130, 0, 1)',
-    'looks-transparent': 'rgba(255, 130, 0, 0.35)',
-    'looks-light-transparent': 'hgba(255, 130, 0, 0.15)',
+    'looks-secondary': '#ff4c4c',
+    'looks-transparent': '#ff4d4d59',
+    'looks-light-transparent': '#ff4d4d26',
     'looks-secondary-dark': 'hsla(0, 42%, 51%, 1)',
 
     'extensions-primary': 'hsla(10, 85%, 65%, 1)',
@@ -13,23 +13,15 @@ const guiColors = {
     'extensions-transparent': 'hsla(10, 85%, 65%, 0.35)',
     'extensions-light': 'hsla(10, 57%, 85%, 1)',
 
-    'drop-highlight': 'rgba(255, 130, 0, 1)'
+    'drop-highlight': '#ff8c8c'
 };
 
 const blockColors = {
-    checkboxActiveBackground: 'rgba(255, 130, 0, 1)',
-    checkboxActiveBorder: 'rgba(230, 119, 0, 1)'
+    checkboxActiveBackground: '#ff4c4c',
+    checkboxActiveBorder: '#cc3333'
 };
 
 export {
     guiColors,
     blockColors
 };
-
-// $motion-primary: rgba(255, 130, 0, 1);
-// $motion-tertiary: rgba(230, 119, 0, 1);
-// $motion-transparent: rgba(255, 130, 0, 0.35); /* 35% transparent version of motion-primary */
-// $motion-light-transparent: hgba(255, 130, 0, 0.15); /* 15% transparent version of motion-primary */
-// $ui-modal-overlay: var(--ui-modal-overlay, rgba(255, 130, 0, 0.9)); /* 90% transparent version of motion-primary */
-// $drop-highlight: rgba(255, 130, 0, 1); /* lighter than motion-primary */
-

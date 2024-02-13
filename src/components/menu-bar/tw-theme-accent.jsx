@@ -7,27 +7,34 @@ import {connect} from 'react-redux';
 import check from './check.svg';
 import dropdownCaret from './dropdown-caret.svg';
 import {MenuItem, Submenu} from '../menu/menu.jsx';
-import {ACCENT_BLUE, ACCENT_MAP, ACCENT_PURPLE, ACCENT_RED, Theme} from '../../lib/themes/index.js';
+import {ACCENT_BLUE, ACCENT_MAP, ACCENT_PURPLE, ACCENT_ORANGE, ACCENT_RED, Theme} from '../../lib/themes/index.js';
 import {openAccentMenu, accentMenuOpen, closeSettingsMenu} from '../../reducers/menus.js';
 import {setTheme} from '../../reducers/theme.js';
 import {persistTheme} from '../../lib/themes/themePersistance.js';
 import styles from './settings-menu.css';
 
+// lk: added orange
+
 const options = defineMessages({
-    [ACCENT_RED]: {
-        defaultMessage: 'Red',
-        description: 'Name of the red color scheme, used by TurboWarp by default.',
-        id: 'tw.accent.red'
+    [ACCENT_ORANGE]: {
+        defaultMessage: 'LibreKitten',
+        description: 'Name of the orange color scheme, used by LibreKitten by default.',
+        id: 'lk.accent.orange'
     },
     [ACCENT_PURPLE]: {
-        defaultMessage: 'Purple',
+        defaultMessage: 'Scratch',
         description: 'Name of the purple color scheme. Matches modern Scratch.',
         id: 'tw.accent.purple'
     },
     [ACCENT_BLUE]: {
-        defaultMessage: 'Blue',
+        defaultMessage: 'Old Scratch',
         description: 'Name of the blue color scheme. Matches Scratch before the high contrast update.',
         id: 'tw.accent.blue'
+    },
+    [ACCENT_RED]: {
+        defaultMessage: 'TurboWarp',
+        description: 'Name of the red color scheme. used by TurboWarp by default.',
+        id: 'lk.accent.red'
     }
 });
 
@@ -49,7 +56,7 @@ const AccentMenuItem = props => (
         <div className={styles.option}>
             <img
                 className={classNames(styles.check, {[styles.selected]: props.isSelected})}
-                width={15}
+                width={15}Matches
                 height={12}
                 src={check}
                 draggable={false}
