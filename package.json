@@ -24,7 +24,8 @@
     "test:lint": "eslint . --ext .js,.jsx",
     "test:unit": "jest test[\\\\/]unit",
     "test:smoke": "jest --runInBand test[\\\\/]smoke",
-    "watch": "webpack --colors --watch"
+    "watch": "webpack --colors --watch",
+    "release": "git push && npm run build && neocities push build"
   },
   "config": {
     "commitizen": {
