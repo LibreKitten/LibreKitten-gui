@@ -168,6 +168,10 @@ const addonDevelopers = [
     },
     {
         username: 'TheKodeToad'
+    },
+    {
+        userID: '125590627',
+        username: 'ZXMushroom63'
     }
 ].map(fromHardcoded);
 
