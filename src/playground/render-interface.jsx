@@ -112,7 +112,7 @@ const Footer = () => (
                             id="tw.footer.credits"
                         />
                     </a>
-                    <a /* </div>href="https://github.com/sponsors/GarboMuffin" */>
+                    <a /* </div>href="https://github.com/sponsors/GarboMuffin" */ style={{cursor: 'not-allowed'}} title="Not available (yet)">
                         <FormattedMessage
                             defaultMessage="Donate"
                             description="Donation link in footer"
@@ -175,6 +175,7 @@ const Footer = () => (
                     </a>
                 </div>
             </div>
+            <p>{"Version: "  + process.env.npm_package_version}</p>
         </div>
     </footer>
 );
