@@ -58,6 +58,10 @@ const contributors = [
     },
     {
         username: 'Wowfunhappy'
+    },
+    {
+        userID: '38055575',
+        username: 'o97doge'
     }
 ].map(fromHardcoded);
 
