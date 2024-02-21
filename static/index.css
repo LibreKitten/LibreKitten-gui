@@ -3,6 +3,14 @@
     --tertiary: rgba(230, 119, 0, 1);
 }
 
+a {
+    color: var(--primary)
+}
+
+a:hover {
+    color: var(--tertiary)
+}
+
 body {
     margin: 0;
     font-family: sans-serif;
@@ -16,16 +24,23 @@ header {
 }
 
 .logo {
-    padding: 8px;
-    padding-right: 8px;
+    padding: 10px;    color: white;
+
+    padding-right: 10px;
 }
 
 header a {
     padding: 16px;
     color: white;
+    text-decoration: none;
+}
+
+header a img {
+    display: block;
 }
 
 header a:hover {
+    color: white;
     background-color: var(--tertiary);
 }
 
@@ -39,6 +54,8 @@ main {
     color: white;
     border-radius: 8px;
     padding: 16px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .button {
@@ -46,11 +63,18 @@ main {
     color: black;
     border-radius: 4px;
     padding: 8px;
+    text-decoration: none;
+    display: inline-block;
 }
 
-
 .primary_button:hover {
+    color: white;
     background-color: var(--tertiary);
+}
+
+.button:hover {
+    color: white;
+    background-color: rgb(163, 163, 163);
 }
 
 section {
