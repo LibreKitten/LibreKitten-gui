@@ -65,6 +65,21 @@ const handleClickAddonSettings = addonId => {
     window.open(url);
 };
 
+const hardRefresh = () => {
+    var search = location.search.replace(/[?&]nocache=\d+/, '');
+    location.replace(location.pathname + search + (search ? '&' : '?') + 'nocache=' + Math.floor(Math.random() * 100000));
+  }
+
+const eraseData = async () => {
+    if (confirm('PLEASE BE AWARE THAT THIS\'LL ERASE **ALL** DATA AND THERE IS NO UNDO!\nARE YOU SURE THAT YOU WANT TO ERASE **ALL** DATA?')) {;
+    localStorage.clear();
+    // We have to manually delete the databases due to Firefox not supporting indexedDB.databases(). WHYYYY???
+    indexedDB.deleteDatabase('TW_RestorePoints');
+    indexedDB.deleteDatabase('TW_Backpack');
+    location.reload();
+    }
+}
+
 const messages = defineMessages({
     defaultTitle: {
         defaultMessage: 'Run Scratch projects faster',
@@ -175,7 +190,7 @@ const Footer = () => (
                     </a>
                 </div>
             </div>
-            <p>{"Version: "  + process.env.npm_package_version}</p>
+            <p>Version: {process.env.npm_package_version} | <a onClick={hardRefresh}>Clear cache</a> | <a onClick={eraseData} style={{color: 'red'}}>Erase data</a></p>
         </div>
     </footer>
 );

@@ -8,13 +8,26 @@ const shuffle = list => {
     return list;
 };
 
-const fromHardcoded = ({userID = '0', username}) => {
+/* Documentation:
+    userID: '143585',
+    username: 'kaj',
+    url: 'https://placekitten.com',
+    img: 'https://placekitten.com/60/60'
+*/
+
+const fromHardcoded = ({userID = '0', username, url, img}) => {
     const result = {
-        image: `https://trampoline.turbowarp.org/avatars/${userID}`,
+        image: 'images/unknown.png',
         text: username
     };
     if (username && userID !== '0') {
         result.href = `https://scratch.mit.edu/users/${username}/`;
+        result.image = `https://trampoline.turbowarp.org/avatars/${userID}`;
+    } else if (url) {
+        result.href = url;
+    }
+    if (userID == '0' && img) {
+        result.image = img;
     }
     return result;
 };
@@ -23,45 +36,12 @@ const fromHardcoded = ({userID = '0', username}) => {
 
 const contributors = [
     {
-        userID: '41219524',
-        username: 'CubesterYT'
-    },
-    {
-        userID: '64691048',
-        username: 'CST1229'
-    },
-    {
-        username: 'FurryR'
-    },
-    {
-        userID: '17340565',
-        username: 'GarboMuffin'
-    },
-    {
-        userID: '12498592',
-        username: 'LilyMakesThings'
-    },
-    {
-        userID: '105362329',
-        username: 'TrueFantom'
-    },
-    {
-        userID: '9636514',
-        username: 'Tacodiva7729'
-    },
-    {
-        username: 'SimonShiki'
-    },
-    {
-        userID: '34824813',
-        username: 'Geotale'
-    },
-    {
-        username: 'Wowfunhappy'
-    },
-    {
         userID: '38055575',
         username: 'o97doge'
+    },
+    {
+        username: 'This could be you!',
+        url: 'https://scratch.mit.edu/studios/34680844/',
     }
 ].map(fromHardcoded);
 
