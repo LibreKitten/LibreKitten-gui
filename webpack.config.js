@@ -189,7 +189,7 @@ module.exports = [
                 chunks: ['editor'],
                 template: 'src/playground/player.ejs',
                 filename: 'editor.html',
-                title: `${APP_NAME} - Run Scratch projects faster`,
+                title: `${APP_NAME} - Code in blocks seriously`,
                 isEditor: true,
                 ...htmlWebpackPluginCommon
             }),
@@ -197,14 +197,14 @@ module.exports = [
                 chunks: ['player'],
                 template: 'src/playground/player.ejs',
                 filename: 'projects.html',
-                title: `${APP_NAME} - Run Scratch projects faster`,
+                title: `${APP_NAME} - Code in blocks seriously`,
                 ...htmlWebpackPluginCommon
             }),
             new HtmlWebpackPlugin({
                 chunks: ['fullscreen'],
                 template: 'src/playground/player.ejs',
                 filename: 'fullscreen.html',
-                title: `${APP_NAME} - Run Scratch projects faster`,
+                title: `${APP_NAME} - Code in blocks seriously`,
                 ...htmlWebpackPluginCommon
             }),
             new HtmlWebpackPlugin({

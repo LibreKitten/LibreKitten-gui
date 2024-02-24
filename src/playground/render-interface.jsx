@@ -82,7 +82,7 @@ const eraseData = async () => {
 
 const messages = defineMessages({
     defaultTitle: {
-        defaultMessage: 'Run Scratch projects faster',
+        defaultMessage: 'Code in blocks seriously',
         description: 'Title of homepage',
         id: 'tw.guiDefaultTitle'
     }
