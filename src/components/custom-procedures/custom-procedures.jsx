@@ -130,7 +130,7 @@ const CustomProcedures = props => (
                     />
                 </label>
             </div>
-            <br/>
+            {/* <br/>
             <label>
                     <hr/>
                     <CustomColor/>
@@ -140,6 +140,7 @@ const CustomProcedures = props => (
                         id="lk.customProcedures.customColor"
                     />
                 </label>
+            */}
             <Box className={styles.buttonRow}>
                 <button
                     className={styles.cancelButton}
