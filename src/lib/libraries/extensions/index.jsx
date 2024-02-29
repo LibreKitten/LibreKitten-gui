@@ -50,6 +50,7 @@ import twIcon from './tw/tw.svg';
 import customExtensionIcon from './custom/custom.svg';
 import returnIcon from './custom/return.svg';
 import galleryIcon from './gallery/gallery.svg';
+import appmakerIcon from './appmaker/software.svg';
 import {APP_NAME} from '../../brand';
 
 export default [
@@ -375,6 +376,27 @@ export default [
                 defaultMessage="Weird new blocks."
                 description="Description of the strange 'TurboWarp Blocks' extension"
                 id="tw.twExtension.description"
+            />
+        ),
+        incompatibleWithScratch: false,
+        tags: ['tw'],
+        featured: true
+    },
+    {
+        name: (
+            <FormattedMessage
+                defaultMessage="App Utilites"
+                description="Name of the App Utilites extension"
+                id="lk.appmaker.name"
+            />
+        ),
+        insetIconURL: appmakerIcon,
+        extensionId: 'appmaker',
+        description: (
+            <FormattedMessage
+                defaultMessage="These are some utilities that can be used for app development."
+                description="Description of the App Utilites extension"
+                id="lk.appmaker.description"
             />
         ),
         incompatibleWithScratch: false,
