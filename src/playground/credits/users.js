@@ -42,6 +42,11 @@ const contributors = [
     {
         username: 'This could be you!',
         url: 'https://scratch.mit.edu/studios/34680844/',
+    },
+    {
+        username: 'nmsderp',
+        img: 'https://avatars.githubusercontent.com/u/130254323?v=4',
+        url: 'https://github.com/nmsderp'
     }
 ].map(fromHardcoded);
 
