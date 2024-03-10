@@ -138,7 +138,7 @@ class LoaderComponent extends React.Component {
                         ref={this.messageRef}
                     />
 
-                    <p>{tip[Math.round(Math.random() * tip.length)]}</p>
+                    <p dangerouslySetInnerHTML={{__html: tip[Math.round(Math.random() * tip.length)]}}/>
 
                     <div className={styles.barOuter}>
                         <div
