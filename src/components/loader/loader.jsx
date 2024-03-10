@@ -59,6 +59,7 @@ class LoaderComponent extends React.Component {
         this.barInnerEl = null;
         this.messageEl = null;
         this.ignoreProgress = false;
+        this.unhelpfulTip = tip[Math.round(Math.random() * tip.length)];
     }
     componentDidMount () {
         this.handleAssetProgress(
@@ -138,7 +139,7 @@ class LoaderComponent extends React.Component {
                         ref={this.messageRef}
                     />
 
-                    <p dangerouslySetInnerHTML={{__html: tip[Math.round(Math.random() * tip.length)]}}/>
+                    <p dangerouslySetInnerHTML={{__html: this.unhelpfulTip}}/>
 
                     <div className={styles.barOuter}>
                         <div
