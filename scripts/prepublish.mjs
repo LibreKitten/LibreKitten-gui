@@ -119,6 +119,7 @@ const prepublish = async () => {
           throw new Error(`${error || stderror}
           If you are on Microsoft Windows, use PowerShell 7+ for your sanity.`);
         }
+        console.log(stdout);
     }); // Hacky solution
 };
 
