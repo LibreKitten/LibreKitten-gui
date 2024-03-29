@@ -11,6 +11,8 @@ import crossFetch from 'cross-fetch';
 import yauzl from 'yauzl';
 import {fileURLToPath} from 'url';
 
+import {exec} from 'child_process'
+
 /** @typedef {import('yauzl').Entry} ZipEntry */
 /** @typedef {import('yauzl').ZipFile} ZipFile */
 
@@ -112,6 +114,12 @@ const downloadMicrobitHex = async () => {
 
 const prepublish = async () => {
     await downloadMicrobitHex();
+    await exec('cd node_modules/scratch-blocks && npm run postinstall', (error, stdout, stderror) => {
+        if (error || stderror) {
+          throw new Error(`${error || stderror}
+          If you are on Microsoft Windows, use PowerShell 7+ for your sanity.`);
+        }
+    }); // Hacky solution
 };
 
 prepublish().then(
