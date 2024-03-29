@@ -113,7 +113,6 @@ const downloadMicrobitHex = async () => {
 };
 
 const prepublish = async () => {
-    await downloadMicrobitHex();
     await exec('cd node_modules/scratch-blocks && npm run postinstall', (error, stdout, stderror) => {
         if (error || stderror) {
           throw new Error(`${error || stderror}
@@ -121,6 +120,7 @@ const prepublish = async () => {
         }
         console.log(stdout);
     }); // Hacky solution
+    await downloadMicrobitHex();
 };
 
 prepublish().then(
