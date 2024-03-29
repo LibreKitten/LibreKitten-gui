@@ -114,7 +114,7 @@ const downloadMicrobitHex = async () => {
 
 const prepublish = async () => {
     console.log('Compiling blocks...');
-    await exec('cd node_modules/scratch-blocks && npm run postinstall', (error, stdout) => {
+    await exec('cd ./node_modules/scratch-blocks && npm run postinstall', (error, stdout) => {
         if (error) {
           throw new Error(`${error}
           If you are on Microsoft Windows, use PowerShell 7+ for your sanity.`);
