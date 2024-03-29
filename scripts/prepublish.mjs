@@ -116,7 +116,7 @@ const downloadMicrobitHex = async () => {
 const prepublish = async () => {
     console.log('Compiling blocks...');
     const execPromise = util.promisify(exec);
-    await execPromise('cd ./node_modules && rm -r -f scratch-blocks && git clone https://codeberg.org/LibreKitten/LibreKitten-blocks.git scratch-blocks && cd scratch-blocks && npm install', (error, stdout) => { // WHYYYYY
+    await execPromise('cd ./node_modules && rm -r -f scratch-blocks && git clone https://codeberg.org/LibreKitten/LibreKitten-blocks.git scratch-blocks && cd scratch-blocks && npm ci', (error, stdout) => { // WHYYYYY
         if (error) {
           throw new Error(`${error}
           If you are on Microsoft Windows, use PowerShell 7+ for your sanity.`);
