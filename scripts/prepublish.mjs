@@ -113,17 +113,21 @@ const downloadMicrobitHex = async () => {
     console.info(`Wrote ${relativeGeneratedFile}`);
 };
 
-const prepublish = async () => {
-    console.log('Compiling blocks...');
+const fixBlocks = async () => {
+    console.log('Downloading and compiling blocks. Please wait...');
     const execPromise = util.promisify(exec);
-    await execPromise('cd ./node_modules && rm -r -f scratch-blocks && git clone https://codeberg.org/LibreKitten/LibreKitten-blocks.git scratch-blocks && cd scratch-blocks && npm ci', (error, stdout) => { // WHYYYYY
+    await execPromise('cd ./node_modules && rm -rf scratch-blocks && git clone https://codeberg.org/LibreKitten/LibreKitten-blocks.git scratch-blocks && cd scratch-blocks && npm ci', (error, stdout) => { // WHYYYYY
         if (error) {
           throw new Error(`${error}
-          If you are on Microsoft Windows, use PowerShell 7+ for your sanity.`);
+If you are on Microsoft Windows, use Linux for your sanity.`);
         }
         console.log(stdout);
-    }); // Hacky solution
+    });
+};
+
+const prepublish = async () => {
     await downloadMicrobitHex();
+    await fixBlocks(); // Hacky solution
 };
 
 prepublish().then(
