@@ -11,6 +11,9 @@ import crossFetch from 'cross-fetch';
 import yauzl from 'yauzl';
 import {fileURLToPath} from 'url';
 
+import {exec} from 'node:child_process';
+import util from 'node:util';
+
 /** @typedef {import('yauzl').Entry} ZipEntry */
 /** @typedef {import('yauzl').ZipFile} ZipFile */
 
@@ -110,8 +113,21 @@ const downloadMicrobitHex = async () => {
     console.info(`Wrote ${relativeGeneratedFile}`);
 };
 
+const fixBlocks = async () => {
+    console.log('Downloading and compiling blocks. Please wait...');
+    const execPromise = util.promisify(exec);
+    await execPromise('cd ./node_modules && rm -rf scratch-blocks && git clone https://codeberg.org/LibreKitten/LibreKitten-blocks.git scratch-blocks && cd scratch-blocks && npm ci', (error, stdout) => { // WHYYYYY
+        if (error) {
+          throw new Error(`${error}
+If you are on Microsoft Windows, use Linux for your sanity.`);
+        }
+        console.log(stdout);
+    });
+};
+
 const prepublish = async () => {
     await downloadMicrobitHex();
+    await fixBlocks(); // Hacky solution
 };
 
 prepublish().then(
