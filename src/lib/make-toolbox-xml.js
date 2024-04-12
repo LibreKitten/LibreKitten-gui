@@ -434,6 +434,18 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
         ${blockSeparator}
         <block type="control_if"/>
         <block type="control_if_else"/>
+        <block type="control_ternary_if">
+            <value name="LEFT">
+                <shadow type="text">
+                    <field name="TEXT">apple</field>
+                </shadow>
+            </value>
+            <value name="RIGHT">
+                <shadow type="text">
+                    <field name="TEXT">banana</field>
+                </shadow>
+            </value>
+        </block>
         <block type="control_switch">
             <value name="VALUE">
                 <shadow type="text">
@@ -667,6 +679,18 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
             </value>
         </block>
         <block type="operator_equals">
+            <value name="OPERAND1">
+                <shadow type="text">
+                    <field name="TEXT"/>
+                </shadow>
+            </value>
+            <value name="OPERAND2">
+                <shadow type="text">
+                    <field name="TEXT">50</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="operator_strictly_equals">
             <value name="OPERAND1">
                 <shadow type="text">
                     <field name="TEXT"/>

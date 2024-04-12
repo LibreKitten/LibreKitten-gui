@@ -190,7 +190,7 @@ const Footer = () => (
                     </a>
                 </div>
             </div>
-            <p>Version: {process.env.npm_package_version} | <a onClick={hardRefresh}>Clear cache</a> | <a onClick={eraseData} style={{color: 'red'}}>Erase data</a></p>
+            <p>Version: {process.env.npm_package_version} | <a onClick={eraseData} style={{color: 'red'}}>Erase data</a></p>
         </div>
     </footer>
 );

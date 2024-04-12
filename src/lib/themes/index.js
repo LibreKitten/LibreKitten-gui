@@ -73,7 +73,7 @@ const BLOCKS_MAP = {
 let themeObjectsCreated = 0;
 
 class Theme {
-    constructor (accent, gui, blocks) {
+    constructor(accent, gui, blocks) {
         // do not modify these directly
         /** @readonly */
         this.id = ++themeObjectsCreated;
@@ -89,7 +89,7 @@ class Theme {
     static dark = new Theme(ACCENT_DEFAULT, GUI_DARK, BLOCKS_DEFAULT);
     static highContrast = new Theme(ACCENT_DEFAULT, GUI_DEFAULT, BLOCKS_HIGH_CONTRAST);
 
-    set (what, to) {
+    set(what, to) {
         if (what === 'accent') {
             return new Theme(to, this.gui, this.blocks);
         } else if (what === 'gui') {
@@ -100,11 +100,11 @@ class Theme {
         throw new Error(`Unknown theme property: ${what}`);
     }
 
-    getBlocksMediaFolder () {
+    getBlocksMediaFolder() {
         return BLOCKS_MAP[this.blocks].blocksMediaFolder;
     }
 
-    getGuiColors () {
+    getGuiColors() {
         return defaultsDeep(
             {},
             ACCENT_MAP[this.accent].guiColors,
@@ -113,7 +113,7 @@ class Theme {
         );
     }
 
-    getBlockColors () {
+    getBlockColors() {
         return defaultsDeep(
             {},
             ACCENT_MAP[this.accent].blockColors,
@@ -122,22 +122,22 @@ class Theme {
         );
     }
 
-    getExtensions () {
+    getExtensions() {
         return BLOCKS_MAP[this.blocks].extensions;
     }
 
-    isDark () {
+    isDark() {
         return this.getGuiColors()['color-scheme'] === 'dark';
     }
 
-    getStageBlockColors () {
+    getStageBlockColors() {
         if (BLOCKS_MAP[this.blocks].useForStage) {
             return this.getBlockColors();
         }
         return Theme.light.getBlockColors();
     }
 
-    getCustomExtensionColors () {
+    getCustomExtensionColors() {
         return BLOCKS_MAP[this.blocks].customExtensionColors;
     }
 }
