@@ -2,10 +2,10 @@ import React from 'react';
 import {FormattedMessage, injectIntl, intlShape, defineMessages} from 'react-intl';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
-import styles from './loader.css';
 import PropTypes from 'prop-types';
 import bindAll from 'lodash.bindall';
-
+import styles from './loader.css';
+import {getIsLoadingWithId} from '../../reducers/project-state';
 import topBlock from './top-block.svg';
 import middleBlock from './middle-block.svg';
 import bottomBlock from './bottom-block.svg';
@@ -37,10 +37,15 @@ const messages = defineMessages({
         description: 'Appears when loading project data, but not assets yet',
         id: 'tw.loader.projectData'
     },
-    assets: {
+    downloadingAssets: {
         defaultMessage: 'Downloading assets ({complete}/{total}) …',
-        description: 'Appears when loading project assets',
-        id: 'tw.loader.assets'
+        description: 'Appears when loading project assets from a project on a remote website',
+        id: 'tw.loader.downloadingAssets'
+    },
+    loadingAssets: {
+        defaultMessage: 'Loading assets ({complete}/{total}) …',
+        description: 'Appears when loading project assets from a project file on the user\'s computer',
+        id: 'tw.loader.loadingAssets'
     }
 });
 
@@ -84,7 +89,8 @@ class LoaderComponent extends React.Component {
             this.messageEl.textContent = this.props.intl.formatMessage(messages.projectData);
         } else {
             this.barInnerEl.style.width = `${finished / total * 100}%`;
-            this.messageEl.textContent = this.props.intl.formatMessage(messages.assets, {
+            const message = this.props.isRemote ? messages.downloadingAssets : messages.loadingAssets
+            this.messageEl.textContent = this.props.intl.formatMessage(message, {
                 complete: finished,
                 total
             });
@@ -156,6 +162,7 @@ class LoaderComponent extends React.Component {
 LoaderComponent.propTypes = {
     intl: intlShape,
     isFullScreen: PropTypes.bool,
+    isRemote: PropTypes.bool,
     messageId: PropTypes.string,
     vm: PropTypes.shape({
         on: PropTypes.func,
@@ -175,6 +182,7 @@ LoaderComponent.defaultProps = {
 };
 
 const mapStateToProps = state => ({
+    isRemote: getIsLoadingWithId(state.scratchGui.projectState.loadingState),
     vm: state.scratchGui.vm
 });
 

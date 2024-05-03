@@ -31,6 +31,7 @@ const base = {
     devServer: {
         contentBase: path.resolve(__dirname, 'build'),
         host: '0.0.0.0',
+        disableHostCheck: true,
         compress: true,
         port: process.env.PORT || 8601,
         // allows ROUTING_STYLE=wildcard to work properly
@@ -157,7 +158,7 @@ module.exports = [
         module: {
             rules: base.module.rules.concat([
                 {
-                    test: /\.(svg|png|wav|mp3|gif|jpg|ttf|otf)$/,
+                    test: /\.(svg|png|wav|mp3|gif|jpg|woff2)$/,
                     loader: 'url-loader',
                     options: {
                         limit: 2048,
@@ -278,7 +279,7 @@ module.exports = [
             module: {
                 rules: base.module.rules.concat([
                     {
-                        test: /\.(svg|png|wav|mp3|gif|jpg|ttf|otf)$/,
+                        test: /\.(svg|png|wav|mp3|gif|jpg|woff2)$/,
                         loader: 'url-loader',
                         options: {
                             limit: 2048,

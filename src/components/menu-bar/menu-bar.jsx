@@ -1018,9 +1018,7 @@ class MenuBar extends React.Component {
                 </div>
 
                 <div className={styles.accountInfoGroup}>
-                    <div className={styles.menuBarItem}>
-                        <TWSaveStatus />
-                    </div>
+                    <TWSaveStatus />
                 </div>
 
                 {aboutButton}
