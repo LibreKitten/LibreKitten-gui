@@ -4,9 +4,9 @@ import React from 'react';
 import {injectIntl, intlShape, defineMessages} from 'react-intl';
 import VM from 'scratch-vm';
 
-import {getSpriteLibrary} from '../lib/libraries/tw-async-libraries';
-import randomizeSpritePosition from '../lib/randomize-sprite-position';
-import spriteTags from '../lib/libraries/sprite-tags';
+import {getSpriteLibrary} from '../lib/libraries/tw-async-libraries.js';
+import randomizeSpritePosition from '../lib/randomize-sprite-position.js';
+import spriteTags from '../lib/libraries/sprite-tags.js';
 
 import LibraryComponent from '../components/library/library.jsx';
 

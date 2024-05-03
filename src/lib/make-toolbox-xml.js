@@ -728,6 +728,13 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
                     </shadow>
                 </value>
             </block>
+            <block type="operator_reverse">
+                <value name="STRING">
+                    <shadow type="text">
+                        <field name="TEXT">${apple}</field>
+                    </shadow>
+                </value>
+            </block>
             <block type="operator_get_from_string">
                 <value name="STRING">
                     <shadow type="text">
@@ -851,7 +858,7 @@ const myBlocks = function (isInitialSetup, isStage, targetId, colors) {
 // eslint-disable-next-line max-len
 const extraTurboWarpBlocks = `
 <block type="argument_reporter_boolean"><field name="VALUE">is compiled?</field></block>
-<block type="argument_reporter_boolean"><field name="VALUE">is TurboWarp?</field></block>
+<block type="argument_reporter_boolean"><field name="VALUE">is LibreKitten?</field></block>
 `;
 /* eslint-enable no-unused-vars */
 

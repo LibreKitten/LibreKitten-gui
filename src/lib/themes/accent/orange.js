@@ -7,6 +7,7 @@ const guiColors = {
     'looks-transparent': 'rgba(255, 130, 0, 0.35)',
     'looks-light-transparent': 'hgba(255, 130, 0, 0.15)',
     'looks-secondary-dark': 'rgba(209, 108, 0, 1)',
+    'error-primary': 'rgba(255, 0, 0, 1)',
 };
 
 const blockColors = {

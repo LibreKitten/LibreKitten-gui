@@ -14,11 +14,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import './import-first';
+import './import-first.js';
 
 import React from 'react';
 
 import Interface from './render-interface.jsx';
-import render from './app-target';
+import render from './app-target.js';
 
 render(<Interface />);

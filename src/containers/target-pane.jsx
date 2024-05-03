@@ -7,22 +7,22 @@ import {intlShape, injectIntl} from 'react-intl';
 import {
     openSpriteLibrary,
     closeSpriteLibrary
-} from '../reducers/modals';
-import {activateTab, COSTUMES_TAB_INDEX, BLOCKS_TAB_INDEX} from '../reducers/editor-tab';
-import {setReceivedBlocks} from '../reducers/hovered-target';
-import {showStandardAlert, closeAlertWithId} from '../reducers/alerts';
-import {setRestore} from '../reducers/restore-deletion';
-import DragConstants from '../lib/drag-constants';
+} from '../reducers/modals.js';
+import {activateTab, COSTUMES_TAB_INDEX, BLOCKS_TAB_INDEX} from '../reducers/editor-tab.js';
+import {setReceivedBlocks} from '../reducers/hovered-target.js';
+import {showStandardAlert, closeAlertWithId} from '../reducers/alerts.js';
+import {setRestore} from '../reducers/restore-deletion.js';
+import DragConstants from '../lib/drag-constants.js';
 import TargetPaneComponent from '../components/target-pane/target-pane.jsx';
-import {getSpriteLibrary} from '../lib/libraries/tw-async-libraries';
+import {getSpriteLibrary} from '../lib/libraries/tw-async-libraries.js';
 import {handleFileUpload, spriteUpload} from '../lib/file-uploader.js';
-import sharedMessages from '../lib/shared-messages';
-import {emptySprite} from '../lib/empty-assets';
-import {highlightTarget} from '../reducers/targets';
-import {fetchSprite, fetchCode} from '../lib/backpack-api';
-import randomizeSpritePosition from '../lib/randomize-sprite-position';
-import downloadBlob from '../lib/download-blob';
-import log from '../lib/log';
+import sharedMessages from '../lib/shared-messages.js';
+import {emptySprite} from '../lib/empty-assets.js';
+import {highlightTarget} from '../reducers/targets.js';
+import {fetchSprite, fetchCode} from '../lib/backpack-api.js';
+import randomizeSpritePosition from '../lib/randomize-sprite-position.js';
+import downloadBlob from '../lib/download-blob.js';
+import log from '../lib/log.js';
 import {placeInViewport} from '../lib/backpack/code-payload.js';
 
 class TargetPane extends React.Component {
@@ -79,6 +79,7 @@ class TargetPane extends React.Component {
         this.props.vm.postSpriteInfo({y});
     }
     handleDeleteSprite (id) {
+        if (!confirm('Are you sure you want to delete this sprite?')) return;
         const restoreSprite = this.props.vm.deleteSprite(id);
         const restoreFun = () => restoreSprite().then(this.handleActivateBlocksTab);
 

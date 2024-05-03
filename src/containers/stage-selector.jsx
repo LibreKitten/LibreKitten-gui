@@ -5,21 +5,21 @@ import React from 'react';
 import {intlShape, injectIntl} from 'react-intl';
 
 import {connect} from 'react-redux';
-import {openBackdropLibrary} from '../reducers/modals';
-import {activateTab, COSTUMES_TAB_INDEX} from '../reducers/editor-tab';
-import {showStandardAlert, closeAlertWithId} from '../reducers/alerts';
-import {setHoveredSprite} from '../reducers/hovered-target';
-import DragConstants from '../lib/drag-constants';
+import {openBackdropLibrary} from '../reducers/modals.js';
+import {activateTab, COSTUMES_TAB_INDEX} from '../reducers/editor-tab.js';
+import {showStandardAlert, closeAlertWithId} from '../reducers/alerts.js';
+import {setHoveredSprite} from '../reducers/hovered-target.js';
+import DragConstants from '../lib/drag-constants.js';
 import DropAreaHOC from '../lib/drop-area-hoc.jsx';
 import ThrottledPropertyHOC from '../lib/throttled-property-hoc.jsx';
-import {emptyCostume} from '../lib/empty-assets';
-import sharedMessages from '../lib/shared-messages';
-import {fetchCode} from '../lib/backpack-api';
-import {getEventXY} from '../lib/touch-utils';
+import {emptyCostume} from '../lib/empty-assets.js';
+import sharedMessages from '../lib/shared-messages.js';
+import {fetchCode} from '../lib/backpack-api.js';
+import {getEventXY} from '../lib/touch-utils.js';
 
 import StageSelectorComponent from '../components/stage-selector/stage-selector.jsx';
 
-import {getBackdropLibrary} from '../lib/libraries/tw-async-libraries';
+import {getBackdropLibrary} from '../lib/libraries/tw-async-libraries.js';
 import {handleFileUpload, costumeUpload} from '../lib/file-uploader.js';
 import {placeInViewport} from '../lib/backpack/code-payload.js';
 

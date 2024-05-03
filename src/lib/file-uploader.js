@@ -1,8 +1,8 @@
 import {BitmapAdapter, sanitizeSvg} from '@turbowarp/scratch-svg-renderer';
 import randomizeSpritePosition from './randomize-sprite-position.js';
-import bmpConverter from './bmp-converter';
-import gifDecoder from './gif-decoder';
-import fixSVG from './tw-svg-fixer';
+import bmpConverter from './bmp-converter.js';
+import gifDecoder from './gif-decoder.js';
+import fixSVG from './tw-svg-fixer.js';
 import convertAudioToWav from './tw-convert-audio-wav.js';
 
 /**

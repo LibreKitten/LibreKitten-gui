@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {setHoveredSprite} from '../reducers/hovered-target';
-import {updateAssetDrag} from '../reducers/asset-drag';
+import {setHoveredSprite} from '../reducers/hovered-target.js';
+import {updateAssetDrag} from '../reducers/asset-drag.js';
 import VM from 'scratch-vm';
-import getCostumeUrl from '../lib/get-costume-url';
-import DragRecognizer from '../lib/drag-recognizer';
-import {getEventXY} from '../lib/touch-utils';
+import getCostumeUrl from '../lib/get-costume-url.js';
+import DragRecognizer from '../lib/drag-recognizer.js';
+import {getEventXY} from '../lib/touch-utils.js';
 
 import SpriteSelectorItemComponent from '../components/sprite-selector-item/sprite-selector-item.jsx';
 
