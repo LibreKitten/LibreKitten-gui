@@ -154,17 +154,6 @@ class LoaderComponent extends React.Component {
                             ref={this.barInnerRef}
                         />
                     </div>
-
-                    {notScratchDesktop() && (
-                        <div
-                            className={styles.prideMonth}
-                            lang="en"
-                        >
-                            <b>{'Did you know?'}</b>
-                            {' '}
-                            {'LGBT Pride Month is celebrated every June.'}
-                        </div>
-                    )}
                 </div>
             </div>
         );

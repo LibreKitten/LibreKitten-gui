@@ -19,15 +19,15 @@ import customIcon from './tw-blocks-custom.svg';
 import openLinkIcon from './tw-open-link.svg';
 
 const options = defineMessages({
-    [BLOCKS_THREE]: {
-        defaultMessage: 'Original',
-        description: 'Name of normal Scratch block colors.',
-        id: 'tw.blockColors.three'
-    },
     [BLOCKS_HIGH_CONTRAST]: {
         defaultMessage: 'High Contrast',
         description: 'Name of the high contrast block colors.',
         id: 'tw.blockColors.highContrast'
+    },
+    [BLOCKS_THREE]: {
+        defaultMessage: 'Classic',
+        description: 'Name of normal Scratch block colors.',
+        id: 'tw.blockColors.three'
     },
     [BLOCKS_DARK]: {
         defaultMessage: 'Dark (Beta)',
@@ -42,8 +42,8 @@ const options = defineMessages({
 });
 
 const icons = {
-    [BLOCKS_THREE]: threeIcon,
     [BLOCKS_HIGH_CONTRAST]: highContrastIcon,
+    [BLOCKS_THREE]: threeIcon,
     [BLOCKS_DARK]: darkIcon,
     [BLOCKS_CUSTOM]: customIcon
 };
@@ -120,7 +120,7 @@ const BlocksThemeMenu = ({
             />
         </div>
         <Submenu place={isRtl ? 'left' : 'right'}>
-            {[BLOCKS_THREE, BLOCKS_HIGH_CONTRAST, BLOCKS_DARK, BLOCKS_CUSTOM].map(i => (
+            {[BLOCKS_HIGH_CONTRAST, BLOCKS_THREE, BLOCKS_DARK, BLOCKS_CUSTOM].map(i => (
                 <ThemeMenuItem
                     key={i}
                     id={i}

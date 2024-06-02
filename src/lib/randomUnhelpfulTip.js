@@ -10,9 +10,12 @@ export const tip = [
     'Crazy? I was crazy once. They locked me in a room, a rubber room. A rubber room with rats. And rats make me crazy.',
     'Meow! Purrrrrr. :3',
     'Also check out <a href="https://www.snail-ide.com">Snail IDE</a>!',
+    'Also check out <a href="https://turbowarp.org">TurboWarp</a>!',
+    'Also check out <a href="https://alpha.unsandboxed.org">Unsandboxed</a>!',
     'Cats are cute.',
     'Look behind you >:3',
     'Fun fact: Every website recieves your IP address.',
     'I know what you did on January 6th 2015.',
-    '<iframe width="200" height="112" src="https://www.youtube-nocookie.com/embed/sRuCvdT8H_Y?si=v248pEf_sXgEDMBq&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+    '<iframe width="200" height="112" src="https://www.youtube-nocookie.com/embed/sRuCvdT8H_Y?si=v248pEf_sXgEDMBq&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+    '<b>Did you know?</b><br>LGBT Pride Month is celebrated every June.'
 ];

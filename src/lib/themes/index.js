@@ -37,7 +37,7 @@ const BLOCKS_DARK = 'dark';
 const BLOCKS_HIGH_CONTRAST = 'high-contrast';
 const BLOCKS_CUSTOM = 'custom';
 const BLOCKS_DEFAULT = BLOCKS_THREE;
-const defaultBlockColors = blocksThree.blockColors;
+const defaultBlockColors = blocksHighContrast.blockColors;
 const BLOCKS_MAP = {
     [BLOCKS_THREE]: {
         blocksMediaFolder: 'blocks-media/default',
