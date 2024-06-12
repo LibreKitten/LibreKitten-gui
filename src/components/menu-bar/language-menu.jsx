@@ -72,6 +72,7 @@ class LanguageMenu extends React.PureComponent {
                         className={styles.icon}
                         src={languageIcon}
                         draggable={false}
+                        style={{filter: 'var(--icon-filter)'}}
                     />
                     <span className={styles.submenuLabel}>
                         <FormattedMessage
@@ -84,6 +85,7 @@ class LanguageMenu extends React.PureComponent {
                         className={styles.expandCaret}
                         src={dropdownCaret}
                         draggable={false}
+                        style={{filter: 'var(--icon-filter)'}}
                     />
                 </div>
                 <Submenu
@@ -106,6 +108,7 @@ class LanguageMenu extends React.PureComponent {
                                         src={check}
                                         draggable={false}
                                         {...(this.props.currentLocale === locale && {ref: this.setRef})}
+                                        style={{filter: 'var(--icon-filter)'}}
                                     />
                                     {locales[locale].name}
                                 </MenuItem>

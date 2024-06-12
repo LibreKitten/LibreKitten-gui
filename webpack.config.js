@@ -13,6 +13,7 @@ const postcssImport = require('postcss-import');
 
 const STATIC_PATH = process.env.STATIC_PATH || '/static';
 const {APP_NAME} = require('./src/lib/brand');
+const { EsbuildPlugin } = require('esbuild-loader');
 
 const root = process.env.ROOT || '';
 if (root.length > 0 && !root.endsWith('/')) {
@@ -169,6 +170,11 @@ module.exports = [
             ])
         },
         optimization: {
+            minimizer: [
+                new EsbuildPlugin({
+                    target: 'es2020'
+                })
+            ],
             splitChunks: {
                 chunks: 'all',
                 minChunks: 2,

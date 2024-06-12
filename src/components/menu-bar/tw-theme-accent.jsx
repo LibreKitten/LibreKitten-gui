@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import check from './check.svg';
 import dropdownCaret from './dropdown-caret.svg';
 import {MenuItem, Submenu} from '../menu/menu.jsx';
-import {ACCENT_BLUE, ACCENT_MAP, ACCENT_PURPLE, ACCENT_ORANGE, ACCENT_RED, ACCENT_RAINBOW, Theme} from '../../lib/themes/index.js';
+import {ACCENT_BLUE, ACCENT_MAP, ACCENT_PURPLE, ACCENT_ORANGE, ACCENT_RED, ACCENT_RAINBOW, ACCENT_WHITE, Theme} from '../../lib/themes/index.js';
 import {openAccentMenu, accentMenuOpen, closeSettingsMenu} from '../../reducers/menus.js';
 import {setTheme} from '../../reducers/theme.js';
 import {persistTheme} from '../../lib/themes/themePersistance.js';
@@ -21,6 +21,11 @@ const options = defineMessages({
         defaultMessage: 'LibreKitten',
         description: 'Name of the orange color scheme, used by LibreKitten by default.',
         id: 'lk.accent.orange'
+    },
+    [ACCENT_WHITE]: {
+        defaultMessage: 'Colourless (Alpha)',
+        description: 'Name of the white color scheme.',
+        id: 'lk.accent.white'
     },
     [ACCENT_PURPLE]: {
         defaultMessage: 'Scratch',
@@ -61,7 +66,7 @@ const ColorIcon = props => icons[props.id] ? (
         className={styles.accentIconOuter}
         style={{
             // menu-bar-background is var(...), don't want to evaluate with the current values
-            backgroundColor: ACCENT_MAP[props.id].guiColors['looks-secondary'],
+            backgroundColor: (ACCENT_MAP[props.id].guiColors['menu-bar-background'] ?? ACCENT_MAP[props.id].guiColors['looks-secondary']),
             backgroundImage: ACCENT_MAP[props.id].guiColors['menu-bar-background-image'],
         }}
     />
@@ -80,6 +85,7 @@ const AccentMenuItem = props => (
                 height={12}
                 src={check}
                 draggable={false}
+                style={{filter: 'var(--icon-filter)'}}
             />
             <ColorIcon id={props.id} />
             <FormattedMessage {...options[props.id]} />
@@ -117,6 +123,7 @@ const AccentThemeMenu = ({
                 className={styles.expandCaret}
                 src={dropdownCaret}
                 draggable={false}
+                style={{filter: 'var(--icon-filter)'}}
             />
         </div>
         <Submenu place={isRtl ? 'left' : 'right'}>

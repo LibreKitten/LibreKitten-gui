@@ -6,4 +6,5 @@
 
 .community-button-icon {
     height: 1.25rem;
+    filter: var(--icon-filter);
 }

@@ -78,3 +78,5 @@ $project-title-inactive: var(--project-title-inactive);
 $project-title-hover: var(--project-title-hover);
 
 $link-color: var(--link-color);
+
+$icon-filter: var(--icon-filter);

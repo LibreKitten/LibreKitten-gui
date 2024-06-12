@@ -1,15 +1,18 @@
 const guiColors = {
-    'motion-primary': 'rgba(255, 130, 0, 1)',
-    'motion-primary-transparent': 'rgba(255, 130, 0, 0.9)',
-    'motion-tertiary': 'rgba(230, 119, 0, 1)',
+    'motion-primary': 'rgba(0, 0, 0, 1)',
+    'motion-primary-transparent': 'rgba(0, 0, 0, 0.9)',
+    'motion-tertiary': 'rgba(0, 0, 0, 1)',
 
-    'looks-secondary': 'rgba(255, 130, 0, 1)',
-    'looks-transparent': 'rgba(255, 130, 0, 0.35)',
-    'looks-light-transparent': 'hgba(255, 130, 0, 0.15)',
-    'looks-secondary-dark': 'rgba(209, 108, 0, 1)',
+    'looks-secondary': 'rgba(0, 0, 0, 1)',
+    'looks-transparent': 'rgba(20, 0, 0, 0.35)',
+    'looks-light-transparent': 'hgba(0, 0, 0, 0.15)',
+    'looks-secondary-dark': 'rgba(0, 0, 0, 1)',
     'error-primary': 'rgba(255, 0, 0, 1)',
 
-    'data-primary': 'rgba(0, 171, 17, 1)'
+    'menu-bar-background': 'rgba(255, 255, 255, 1)',
+    'menu-bar-foreground': 'rgba(0, 0, 0, 1)',
+
+    'icon-filter': 'invert(100%)'
 };
 
 const blockColors = {

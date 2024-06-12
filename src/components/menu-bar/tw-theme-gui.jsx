@@ -27,6 +27,7 @@ const GuiThemeMenu = ({
                 draggable={false}
                 width={24}
                 height={24}
+                style={{filter: 'var(--icon-filter)'}}
             />
             <span className={styles.submenuLabel}>
                 {theme.gui === GUI_DARK ? (

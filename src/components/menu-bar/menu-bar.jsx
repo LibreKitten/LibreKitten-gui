@@ -510,6 +510,7 @@ class MenuBar extends React.Component {
                                     draggable={false}
                                     width={8}
                                     height={5}
+                                    style={{filter: 'var(--icon-filter)'}}
                                 />
                                 <MenuBarMenu
                                     className={classNames(styles.menuBarMenu)}
@@ -570,6 +571,7 @@ class MenuBar extends React.Component {
                                     draggable={false}
                                     width={20}
                                     height={20}
+                                    style={{filter: 'var(--icon-filter)'}}
                                 />
                                 <span className={styles.collapsibleLabel}>
                                     <FormattedMessage
@@ -583,6 +585,7 @@ class MenuBar extends React.Component {
                                     draggable={false}
                                     width={8}
                                     height={5}
+                                    style={{filter: 'var(--icon-filter)'}}
                                 />
                                 <MenuBarMenu
                                     className={classNames(styles.menuBarMenu)}
@@ -719,6 +722,7 @@ class MenuBar extends React.Component {
                                 draggable={false}
                                 width={20}
                                 height={20}
+                                style={{filter: 'var(--icon-filter)'}}
                             />
                             <span className={styles.collapsibleLabel}>
                                 <FormattedMessage
@@ -732,6 +736,7 @@ class MenuBar extends React.Component {
                                 draggable={false}
                                 width={8}
                                 height={5}
+                                style={{filter: 'var(--icon-filter)'}}
                             />
                             <MenuBarMenu
                                 className={classNames(styles.menuBarMenu)}
@@ -887,6 +892,7 @@ class MenuBar extends React.Component {
                                     draggable={false}
                                     width={20}
                                     height={20}
+                                    style={{filter: 'var(--icon-filter)'}}
                                 />
                                 <span className={styles.collapsibleLabel}>
                                     <FormattedMessage
@@ -907,6 +913,7 @@ class MenuBar extends React.Component {
                                     draggable={false}
                                     width={20}
                                     height={20}
+                                    style={{filter: 'var(--icon-filter)'}}
                                 />
                                 <span className={styles.collapsibleLabel}>
                                     <FormattedMessage

@@ -106,7 +106,7 @@
 }
 
 .feedback-button {
-    background-color: white;
+    background-color: var(--menu-bar-foreground);
     color: inherit;
     height: 34px;
 }
@@ -213,6 +213,7 @@
     height: 1.25rem;
     margin: 0.5rem;
     vertical-align: middle;
+    filter: var(--icon-filter);
 }
 
 .collapsible-label {

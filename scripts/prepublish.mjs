@@ -133,7 +133,7 @@ If you are on Microsoft Windows, use Linux for your sanity.`);
 
 const prepublish = async () => {
     await downloadMicrobitHex();
-    await fixBlocks(); // Hacky solution
+    /* await fixBlocks(); // Hacky solution */
 };
 
 prepublish().then(

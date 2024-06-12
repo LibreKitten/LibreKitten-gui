@@ -82,6 +82,7 @@ const blockColors = {
         quaternary: '#9ee2db'
     },
     text: '#000000',
+    textField: '#FFFFFF',
     textFieldText: '#000000', // Text inside of inputs e.g. 90 in [point in direction (90)]
     toolboxText: '#000000', // Toolbox text, color picker text (used to be #575E75)
     blackText: '#000000',
@@ -89,9 +90,43 @@ const blockColors = {
     toolboxHover: '#3373CC',
     insertionMarker: '#000000',
     insertionMarkerOpacity: 0.2,
+    dragShadowOpacity: 0.6,
+    stackGlow: '#FFF200',
+    stackGlowSize: 4,
+    stackGlowOpacity: 1,
+    replacementGlow: '#FFFFFF',
+    replacementGlowSize: 2,
+    replacementGlowOpacity: 1,
+    colourPickerStroke: '#FFFFFF',
     fieldShadow: 'rgba(255, 255, 255, 0.3)',
     dragShadowOpacity: 0.6,
-    menuHover: 'rgba(255, 255, 255, 0.3)'
+    menuHover: 'rgba(255, 255, 255, 0.3)',
+    fieldShadow: 'rgba(255, 255, 255, 0.3)',
+    dropDownShadow: 'rgba(0, 0, 0, .3)',
+    numPadBackground: '#547AB2',
+    numPadBorder: '#435F91',
+    numPadActiveBackground: '#435F91',
+    numPadText: 'white', // Do not use hex here, it cannot be inlined with data-uri SVG
+    valueReportBackground: '#FFFFFF',
+    valueReportBorder: '#AAAAAA',
+    valueReportForeground: '#000000',
+    menuHover: 'rgba(0, 0, 0, 0.2)',
+    contextMenuBackground: '#ffffff',
+    contextMenuBorder: '#cccccc',
+    contextMenuForeground: '#000000',
+    contextMenuActiveBackground: '#d6e9f8',
+    contextMenuDisabledForeground: '#cccccc',
+    flyoutLabelColor: '#575E75',
+    checkboxInactiveBackground: '#ffffff',
+    checkboxInactiveBorder: '#c8c8c8',
+    checkboxActiveBackground: '#4C97FF',
+    checkboxActiveBorder: '#3373CC',
+    checkboxCheck: '#ffffff',
+    buttonBorder: '#c6c6c6',
+    buttonActiveBackground: '#ffffff',
+    buttonForeground: '#575E75',
+    zoomIconFilter: 'none',
+    gridColor: '#dddddd'
 };
 
 const extensions = {

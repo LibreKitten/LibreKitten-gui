@@ -17,5 +17,5 @@ export const tip = [
     'Fun fact: Every website recieves your IP address.',
     'I know what you did on January 6th 2015.',
     '<iframe width="200" height="112" src="https://www.youtube-nocookie.com/embed/sRuCvdT8H_Y?si=v248pEf_sXgEDMBq&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
-    '<b>Did you know?</b><br>LGBT Pride Month is celebrated every June.'
+    '<b>Did you know?</b> LGBT Pride Month is celebrated every June.'
 ];

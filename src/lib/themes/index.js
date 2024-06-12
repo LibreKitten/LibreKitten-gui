@@ -5,6 +5,7 @@ import * as accentBlue from './accent/blue';
 import * as accentOrange from './accent/orange';
 import * as accentRed from './accent/red';
 import * as accentRainbow from './accent/rainbow';
+import * as accentWhite from './accent/white';
 
 import * as guiLight from './gui/light';
 import * as guiDark from './gui/dark';
@@ -18,12 +19,14 @@ const ACCENT_BLUE = 'blue';
 const ACCENT_ORANGE = 'orange';
 const ACCENT_RED = 'red';
 const ACCENT_RAINBOW = 'rainbow';
+const ACCENT_WHITE = 'white';
 const ACCENT_MAP = {
     [ACCENT_PURPLE]: accentPurple,
     [ACCENT_BLUE]: accentBlue,
     [ACCENT_ORANGE]: accentOrange,
     [ACCENT_RED]: accentRed,
-    [ACCENT_RAINBOW]: accentRainbow
+    [ACCENT_RAINBOW]: accentRainbow,
+    [ACCENT_WHITE]: accentWhite,
 };
 const ACCENT_DEFAULT = ACCENT_ORANGE;
 
@@ -40,7 +43,7 @@ const BLOCKS_DARK = 'dark';
 const BLOCKS_HIGH_CONTRAST = 'high-contrast';
 const BLOCKS_CUSTOM = 'custom';
 const BLOCKS_DEFAULT = BLOCKS_THREE;
-const defaultBlockColors = blocksHighContrast.blockColors;
+const defaultBlockColors = blocksThree.blockColors;
 const BLOCKS_MAP = {
     [BLOCKS_THREE]: {
         blocksMediaFolder: 'blocks-media/default',
@@ -153,6 +156,7 @@ export {
     ACCENT_PURPLE,
     ACCENT_BLUE,
     ACCENT_RAINBOW,
+    ACCENT_WHITE,
     ACCENT_RED,
     ACCENT_MAP,
 

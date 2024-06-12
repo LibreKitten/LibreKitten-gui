@@ -72,3 +72,5 @@ $page-background-default: var(--page-background-default);
 $page-foreground-default: var(--page-foreground-default);
 
 $link-color-default: var(--link-color-default);
+
+$icon-filter: var(--icon-filter-default);

@@ -37,6 +37,7 @@ const SettingsMenu = ({
             draggable={false}
             width={20}
             height={20}
+            style={{filter: 'var(--icon-filter)'}}
         />
         <span className={styles.dropdownLabel}>
             <FormattedMessage
@@ -50,6 +51,7 @@ const SettingsMenu = ({
             draggable={false}
             width={8}
             height={5}
+            style={{filter: 'var(--icon-filter)'}}
         />
         <MenuBarMenu
             className={menuBarStyles.menuBarMenu}

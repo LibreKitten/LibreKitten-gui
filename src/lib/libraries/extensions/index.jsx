@@ -354,10 +354,11 @@ export default [
                 id="tw.customReporters.description"
             />
         ),
-        tags: ['tw'],
+        tags: ['lk'],
         incompatibleWithScratch: false,
         featured: true
     },
+    /*
     {
         name: (
             <FormattedMessage
@@ -382,6 +383,7 @@ export default [
         tags: ['tw'],
         featured: true
     },
+    */
     {
         name: (
             <FormattedMessage
@@ -400,7 +402,7 @@ export default [
             />
         ),
         incompatibleWithScratch: false,
-        tags: ['tw'],
+        tags: ['lk'],
         featured: true
     },
     {
@@ -420,7 +422,7 @@ export default [
                 id="tw.customExtension.description"
             />
         ),
-        tags: ['tw'],
+        tags: ['lk'],
         featured: true
         // Not marked as incompatible with Scratch so that clicking on it doesn't show a prompt
     }
