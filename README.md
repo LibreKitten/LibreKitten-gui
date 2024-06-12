@@ -6,7 +6,8 @@ Based on [TurboWarp's source code](https://github.com/TurboWarp/scratch-gui).
 
 ## Setup
 
-See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp environment.
+See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp/LibreKitten environment.
+You want to do `pnpm install --shamefully-hoist` instead of `pnpm ci` for LibreKitten.
 
 If you just want to play with the GUI then it's the same process as upstream scratch-gui.
 
