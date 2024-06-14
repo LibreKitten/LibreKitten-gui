@@ -71,7 +71,7 @@ const hardRefresh = () => {
 }
 
 const eraseData = async () => {
-    if (confirm('PLEASE BE AWARE THAT THIS\'LL ERASE **ALL** DATA AND THERE IS NO UNDO!\nARE YOU SURE THAT YOU WANT TO ERASE **ALL** DATA?')) {
+    if (confirm('Please be aware that this will reset all your local data, including the Restore Points and backpack. Are you sure you want to continue?')) {
         ;
         localStorage.clear();
         // We have to manually delete the databases due to Firefox not supporting indexedDB.databases(). WHYYYY???
