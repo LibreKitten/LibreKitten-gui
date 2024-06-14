@@ -50,7 +50,10 @@ import twIcon from './tw/tw.svg';
 import customExtensionIcon from './custom/custom.svg';
 import returnIcon from './custom/return.svg';
 import galleryIcon from './gallery/gallery.svg';
-import appmakerIcon from './appmaker/software.svg';
+import appmaker from './appmaker/software.png';
+import appmakerIcon from './appmaker/software-small.svg';
+import server from './server/server.png';
+import serverIcon from './server/server-small.svg';
 import {APP_NAME} from '../../brand';
 
 export default [
@@ -392,6 +395,7 @@ export default [
                 id="lk.appmaker.name"
             />
         ),
+        iconURL: appmaker,
         insetIconURL: appmakerIcon,
         extensionId: 'appmaker',
         description: (
@@ -399,6 +403,28 @@ export default [
                 defaultMessage="These are some utilities that can be used for app development."
                 description="Description of the App Utilites extension"
                 id="lk.appmaker.description"
+            />
+        ),
+        incompatibleWithScratch: false,
+        tags: ['lk'],
+        featured: true
+    },
+    {
+        name: (
+            <FormattedMessage
+                defaultMessage="Web Server"
+                description="Name of the Web Server extension"
+                id="lk.server.name"
+            />
+        ),
+        iconURL: server,
+        insetIconURL: serverIcon,
+        extensionId: 'server',
+        description: (
+            <FormattedMessage
+                defaultMessage="Program an website API in LibreKitten. WARNING: This extension is not finished and could change and **break the project** using this extension at any time."
+                description="Description of the Web Server extension"
+                id="lk.server.description"
             />
         ),
         incompatibleWithScratch: false,
