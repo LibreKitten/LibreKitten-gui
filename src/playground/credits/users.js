@@ -47,6 +47,11 @@ const contributors = [
         username: 'nmsderp',
         img: 'https://avatars.githubusercontent.com/u/130254323?v=4',
         url: 'https://github.com/nmsderp'
+    },
+    {
+        username: 'dumo',
+        img: 'https://codeberg.org/avatars/c9a451e80c5aa5e03f70fa22950f60d7cad58af959a604e2964df079bf818cdd?size=80',
+        url: 'https://codeberg.org/dumo'
     }
 ].map(fromHardcoded);
 
