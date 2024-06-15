@@ -4,6 +4,8 @@ This also adds a website.
 
 Based on [TurboWarp's source code](https://github.com/TurboWarp/scratch-gui).
 
+LibreKitten is a block-based visual programming language that is designed to make programming spontaneously enjoyable.
+
 ## Setup
 
 See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp/LibreKitten environment.
