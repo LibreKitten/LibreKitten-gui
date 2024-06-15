@@ -30,7 +30,7 @@ steps:
       event: [push]
     # Use the official jekyll build container
     image: node
-    secrets: [cbtoken,]
+    secrets: [cbtoken]
     commands:
       # Avoid permission denied errors
       - chmod -R a+w .
