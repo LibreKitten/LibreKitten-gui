@@ -1,7 +1,7 @@
 {
   "name": "librekitten-gui",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Graphical User Interface for creating and running Scratch 3.0 projects",
   "author": "Massachusetts Institute of Technology",
   "license": "GPL-3.0",
