@@ -34,6 +34,7 @@ steps:
     commands:
       # Am i even allowed to do this?
       - apt-get update && apt-get install nodejs python3 openjdk-21-jdk git --no-install-recommends -y
+      - source ~/.bashrc
       # Avoid permission denied errors
       - chmod -R a+w .
       # Set up git in a working way
