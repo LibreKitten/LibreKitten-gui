@@ -26,3 +26,6 @@ npm-*
 
 # for act
 .secrets
+
+# Let the woodpecker peck in peace
+pnpm-lock.yaml
