@@ -41,14 +41,14 @@ steps:
       # clone and move the target repo
       - git clone -b main https://codeberg.org/LibreKitten/pages.git build
       - chmod -R a+w build
-	    - rm -rf build/**/*
+      - rm -rf build/**/*
       - cd build
       # Prepare for push
       - git remote set-url origin https://$CBTOKEN@codeberg.org/LibreKitten/pages.git
       - cd ..
       # Run build stage
       - npm install pnpm -g
-	  - pnpm install --shamefully-hoist
+      - pnpm install --shamefully-hoist
       - pnpm run build
       # Only needed for custom domains
       #- cp domains _site/.domains
