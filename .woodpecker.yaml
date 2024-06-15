@@ -33,8 +33,9 @@ steps:
     secrets: [cbtoken]
     commands:
       # Am i even allowed to do this?
-      - apt-get update && apt-get install nodejs python3 openjdk-21-jdk git --no-install-recommends -y
-      - . ~/.bashrc
+      - apt-get update && apt-get install python3 openjdk-21-jdk git --no-install-recommends -y
+      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+      - nvm install 20
       # Avoid permission denied errors
       - chmod -R a+w .
       # Set up git in a working way
