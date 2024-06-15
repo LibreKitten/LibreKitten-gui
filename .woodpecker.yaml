@@ -25,11 +25,11 @@
 #
 
 steps:
-  - name: ubuntu:latest
+  - name: build
     when:
       event: [push]
     # Use the official jekyll build container
-    image: node
+    image: ubuntu:latest
     secrets: [cbtoken]
     commands:
       # Am i even allowed to do this?
