@@ -2,6 +2,7 @@ import projectData from './project-data';
 
 /* eslint-disable import/no-unresolved */
 import overrideDefaultProject from '!arraybuffer-loader!./override-default-project.lb';
+import canaryProject from '!arraybuffer-loader!./canary-ide.lb';
 import backdrop from '!raw-loader!./cd21514d0531fdffb22204e0ec5ed84a.svg';
 import costume1 from '!raw-loader!./librekitty.svg';
 /* eslint-enable import/no-unresolved */
@@ -14,6 +15,15 @@ const defaultProject = translator => {
             assetType: 'Project',
             dataFormat: 'JSON',
             data: overrideDefaultProject
+        }];
+    }
+
+    if (canaryMode) {
+        return [{
+            id: 0,
+            assetType: 'Project',
+            dataFormat: 'JSON',
+            data: canaryProject
         }];
     }
 
