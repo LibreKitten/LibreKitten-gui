@@ -53,7 +53,7 @@ steps:
       - npm install pnpm -g
       - pnpm install --shamefully-hoist
       - pnpm run prepublish
-      - export NODE_ENV=production export NODE_OPTIONS=--openssl-legacy-provider pnpm run ci-build
+      - pnpm run ci-build
       # Only needed for custom domains
       #- cp domains _site/.domains
       # Push to target
