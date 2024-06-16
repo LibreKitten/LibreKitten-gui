@@ -29,14 +29,11 @@ steps:
     when:
       event: [push]
     # Use the official jekyll build container
-    image: ubuntu:latest
+    image: node
     secrets: [cbtoken]
     commands:
       # Am i even allowed to do this?
-      - apt-get update && apt-get install python3 openjdk-21-jdk git curl --no-install-recommends -y
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-      - . /root/.profile
-      - nvm install 20
+      - apt-get update && apt-get install python3 default-jre-headless --no-install-recommends -y
       # Avoid permission denied errors
       - chmod -R a+w .
       # Set up git in a working way
@@ -52,9 +49,7 @@ steps:
       - git remote set-url origin https://$CBTOKEN@codeberg.org/LibreKitten/pages.git
       - cd ..
       # Run build stage
-      - . /root/.profile
       - npm install pnpm -g
-      - . /root/.profile
       - pnpm install --shamefully-hoist
       - pnpm run build
       # Only needed for custom domains
