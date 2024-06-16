@@ -47,6 +47,7 @@ steps:
       # Prepare for push
       - git rm -r -f ./**/*
       - git remote set-url origin https://$CBTOKEN@codeberg.org/LibreKitten/pages.git
+      - git commit -m 'Woodpecker CI - Clean up.'
       - cd ..
       # Run build stage
       - npm install pnpm -g
