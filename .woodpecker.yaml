@@ -43,9 +43,9 @@ steps:
       # clone and move the target repo
       - git clone --depth=1 https://codeberg.org/LibreKitten/pages.git build
       - chmod -R a+w build
-      - rm -rf ./build/**/*
       - cd build
       # Prepare for push
+      - git rm -r -f ./**/*
       - git remote set-url origin https://$CBTOKEN@codeberg.org/LibreKitten/pages.git
       - cd ..
       # Run build stage
