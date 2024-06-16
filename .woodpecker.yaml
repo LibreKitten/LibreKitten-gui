@@ -43,6 +43,7 @@ steps:
       # clone and move the target repo
       - git clone --depth=1 https://codeberg.org/LibreKitten/pages.git build
       - chmod -R a+w build
+      - rm -rf ./build/**/*
       - cd build
       # Prepare for push
       - git remote set-url origin https://$CBTOKEN@codeberg.org/LibreKitten/pages.git
@@ -51,12 +52,11 @@ steps:
       - npm install pnpm -g
       - pnpm install --shamefully-hoist
       - pnpm run prepublish
-      - pnpm run build
+      - pnpm dlx webpack --bail
       # Only needed for custom domains
       #- cp domains _site/.domains
       # Push to target
       - cd build
-      - ls
       - git add --all
       - git commit -m "Woodpecker CI Build at $( env TZ=America/Chicago date +"%Y-%m-%d %X %Z" )"
       - git push -u origin main
