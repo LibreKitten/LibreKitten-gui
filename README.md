@@ -9,7 +9,10 @@ LibreKitten is a block-based visual programming language that is designed to mak
 ## Setup
 
 See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp/LibreKitten environment.
+
 You want to do `pnpm install --shamefully-hoist` instead of `npm ci` for LibreKitten.
+
+You want to run `pnpm run prepublish` as well.
 
 If you just want to play with the GUI then it's the same process as upstream scratch-gui.
 

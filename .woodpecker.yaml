@@ -51,6 +51,7 @@ steps:
       # Run build stage
       - npm install pnpm -g
       - pnpm install --shamefully-hoist
+      - pnpm run prepublish
       - pnpm run build
       # Only needed for custom domains
       #- cp domains _site/.domains
