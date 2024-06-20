@@ -518,14 +518,14 @@ class MenuBar extends React.Component {
                                     place={this.props.isRtl ? 'left' : 'right'}
                                 >
                                     <MenuSection>
-                                        <MenuItemLink href="https://scratch.mit.edu/discuss/topic/737994/#reply">
+                                        <MenuItemLink href="https://forums.librekitten.org/">
                                             <FormattedMessage
                                                 defaultMessage="Some scripts encountered errors."
                                                 description="Link in error menu"
                                                 id="tw.menuBar.reportError1"
                                             />
                                         </MenuItemLink>
-                                        <MenuItemLink href="https://scratch.mit.edu/discuss/topic/737994/#reply">
+                                        <MenuItemLink href="https://forums.librekitten.org/">
                                             <FormattedMessage
                                                 defaultMessage="This is a bug. Please report it."
                                                 description="Link in error menu"
@@ -1014,14 +1014,14 @@ class MenuBar extends React.Component {
                     <div className={styles.menuBarItem}>
                         <a
                             className={styles.feedbackLink}
-                            href="https://scratch.mit.edu/discuss/topic/737994/"
+                            href="https://forums.librekitten.org/"
                             rel="noopener noreferrer"
                             target="_blank"
                         >
                             {/* todo: icon */}
                             <Button className={styles.feedbackButton}>
                                 <FormattedMessage
-                                    defaultMessage="{APP_NAME} forum topic (for feedback)"
+                                    defaultMessage="Go to {APP_NAME} Forums"
                                     description="Button to give feedback in the menu bar"
                                     id="tw.feedbackButton"
                                     values={{

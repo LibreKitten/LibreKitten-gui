@@ -41,7 +41,7 @@ const contributors = [
     },
     {
         username: 'This could be you!',
-        url: 'https://scratch.mit.edu/studios/34680844/',
+        url: 'https://codeberg.org/LibreKitten',
     },
     {
         username: 'nmsderp',
