@@ -37,3 +37,6 @@ iPad
 
 Android Tablet
 * [ ] Chrome
+
+### Statements
+* [ ] I agree to license my contributions under the GNU General Public License v3.0.
