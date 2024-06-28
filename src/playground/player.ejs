@@ -36,18 +36,26 @@
         max-width: 80%;
       }
       .splash-spinner:after {
+        background-image: url('/images/librekitten.svg');
+        background-repeat: no-repeat;
+        background-size: 128px 128px;
         content: " ";
         display: block;
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        border: 6px solid;
-        border-color: currentColor transparent currentColor transparent;
-        animation: splash-spinner 1.2s linear infinite;
+        width: 128px;
+        height: 128px;
+        animation: splash-spinner 0.75s infinite alternate ease-in-out;
       }
       @keyframes splash-spinner {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        from {  
+          background-size: 64px 64px;
+          width: 64px;
+          height: 64px;
+        }
+        to { 
+          background-size: 128px 128px;
+          width: 128px;
+          height: 128px;
+        }
       }
       .splash-error-title {
         font-weight: bold;
@@ -84,7 +92,7 @@
       <div class="splash-screen">
         <div>
           <h1><%= htmlWebpackPlugin.options.APP_NAME %> requires JavaScript</h1>
-          <p>Consider using <a href="https://desktop.turbowarp.org/">TurboWarp Desktop</a> if you are afraid of remote JavaScript.</p>
+          <!-- <p>Consider using <a href="https://desktop.turbowarp.org/">TurboWarp Desktop</a> if you are afraid of remote JavaScript.</p> -->
         </div>
       </div>
     </noscript>
@@ -137,12 +145,8 @@
         var splash = document.querySelector('.spash-waiting-for-js');
         splash.setAttribute('data-theme', theme);
         if (theme !== 'dark') {
-          <% if (htmlWebpackPlugin.options.isEditor) { %>
             splash.style.backgroundColor = accent;
             splash.style.color = 'white';
-          <% } else { %>
-            splash.style.color = accent;
-          <% } %>
         }
         splash.hidden = false;
 

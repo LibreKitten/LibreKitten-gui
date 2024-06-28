@@ -1010,7 +1010,9 @@ class MenuBar extends React.Component {
                             />
                         ) : []))}
                     </div>
-                    {/* tw: add a feedback button */}
+                    {/* tw: add a feedback button
+                        lk: make that feedback button link to the LibreKitten forums.
+                    */}
                     <div className={styles.menuBarItem}>
                         <a
                             className={styles.feedbackLink}
