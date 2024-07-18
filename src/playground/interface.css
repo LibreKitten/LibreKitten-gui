@@ -115,3 +115,11 @@ a {
     border-color: #ff52526e;
     background-color: #ff525240;
 }
+
+.notice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $motion-tertiary;
+    color: white;
+}

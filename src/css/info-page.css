@@ -1,4 +1,4 @@
-@import "../../css/colors.css";
+@import "./colors.css";
 
 * {
     box-sizing: border-box;
@@ -24,7 +24,7 @@ a {
 
 .header-container {
     color: white;
-    background-color: $looks-secondary;
+    background-color: $motion-tertiary;
     padding: 20px 0;
     text-align: center;
     margin-bottom: 30px;

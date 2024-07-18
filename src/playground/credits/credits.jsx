@@ -1,12 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { compose } from 'redux'; import PropTypes from 'prop-types';
 import render from '../app-target';
-import styles from './credits.css';
+import styles from '../../css/info-page.css';
 
-import {APP_NAME} from '../../lib/brand';
-import {applyGuiColors} from '../../lib/themes/guiHelpers';
-import {detectTheme} from '../../lib/themes/themePersistance';
+import AppStateHOC from '../../lib/app-state-hoc.jsx';
+import { injectIntl } from 'react-intl'
+import { APP_NAME } from '../../lib/brand';
+import { applyGuiColors } from '../../lib/themes/guiHelpers';
+import { detectTheme } from '../../lib/themes/themePersistance';
 import UserData from './users';
+import MenuBar from '../../components/menu-bar/menu-bar.jsx';
+import Footer from '../../components/lk-footer/footer.jsx';
 
 import librekitty from './purring-librekitty-with-love-heart.svg'
 
@@ -15,7 +20,7 @@ import librekitty from './purring-librekitty-with-love-heart.svg'
 applyGuiColors(detectTheme());
 document.documentElement.lang = 'en';
 
-const User = ({image, text, href}) => (
+const User = ({ image, text, href }) => (
     <a
         href={href}
         target="_blank"
@@ -40,7 +45,7 @@ User.propTypes = {
     href: PropTypes.string
 };
 
-const UserList = ({users}) => (
+const UserList = ({ users }) => (
     <div className={styles.users}>
         {users.map((data, index) => (
             <User
@@ -56,6 +61,9 @@ UserList.propTypes = {
 
 const Credits = () => (
     <main className={styles.main}>
+        <MenuBar
+            onClickAddonSettings={() => {}}
+        />
         <header className={styles.headerContainer}>
             <h1 className={styles.headerText}>
                 {APP_NAME} Credits
@@ -67,10 +75,19 @@ const Credits = () => (
                 Without them, coding would have been less accessible to people, and people would have had to learn confusing languages with syntax errors as their first programming language.
             </p>
         </section>
+        {APP_NAME !== 'LibreKitten' && (
+            // Be kind and considerate. Don't remove this :) (The TurboWarp one was replaced by a more detailed version.)
+            <section>
+                <h2>LibreKitten</h2>
+                <p>
+                    {APP_NAME} is based on the work of the <a href="https://librekitten.org/credits.html">LibreKitten contributors</a> but is not endorsed by LibreKitten in any way.
+                </p>
+            </section>
+        )}
         <section>
             <h2>TurboWarp</h2>
-            <p> 
-               {APP_NAME} is based on the work of the <a href="https://turbowarp.org/credits.html">TurboWarp contributors</a> but is not endorsed by TurboWarp in any way.
+            <p>
+                {APP_NAME} is based on the work of the <a href="https://turbowarp.org/credits.html">TurboWarp contributors</a> but is not endorsed by TurboWarp in any way.
             </p>
             <p>
                 <a href="https://github.com/sponsors/GarboMuffin">
@@ -78,15 +95,6 @@ const Credits = () => (
                 </a>
             </p>
         </section>
-        {APP_NAME !== 'LibreKitten' && (
-            // Be kind and considerate. Don't remove this :) (The TurboWarp one was replaced by a more detailed version.)
-            <section>
-                <h2>LibreKitten</h2>
-                <p>
-                {APP_NAME} is based on the work of the <a href="https://placekitten.com">LibreKitten contributors</a> but is not endorsed by LibreKitten in any way.
-                </p>
-            </section>
-        )}
         <section>
             <h2>Scratch</h2>
             <p>
@@ -129,22 +137,25 @@ const Credits = () => (
             </p>
         </section>
         <section>
-        <p>
-            <img
-                src={librekitty}
-                alt='The Librekitty (cat) purring with a love heart.'
-            />
-        </p>
-        <i>The  Librekitty purring from your usage of LibreKitten.</i>
-        <p>- The Librekitty.</p>
-        <p>
+            <p>
+                <img
+                    src={librekitty}
+                    alt='The Librekitty (cat) purring with a love heart.'
+                />
+            </p>
+            <i>The  Librekitty purring from your usage of LibreKitten.</i>
+            <p>- The Librekitty.</p>
+            <p>
                 <i>
                     Individual contributors are listed in no particular order.
                     The order is randomized each visit.
                 </i>
-        </p>
+            </p>
         </section>
+        <Footer />
     </main>
 );
 
-render(<Credits />);
+const WrappedCredits = compose(AppStateHOC)(Credits);
+
+render(< WrappedCredits />);

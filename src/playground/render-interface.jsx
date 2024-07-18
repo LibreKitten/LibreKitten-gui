@@ -42,7 +42,8 @@ import AddonChannels from '../addons/channels';
 import { loadServiceWorker } from './load-service-worker';
 import runAddons from '../addons/entry';
 import InvalidEmbed from '../components/tw-invalid-embed/invalid-embed.jsx';
-import {APP_NAME} from '../lib/brand.js';
+import Footer from '../components/lk-footer/footer.jsx';
+import { APP_NAME } from '../lib/brand.js';
 
 import styles from './interface.css';
 
@@ -54,22 +55,6 @@ const handleClickAddonSettings = addonId => {
     const url = `${process.env.ROOT}${path}${typeof addonId === 'string' ? `#${addonId}` : ''}`;
     window.open(url);
 };
-
-const hardRefresh = () => {
-    var search = location.search.replace(/[?&]nocache=\d+/, '');
-    location.replace(location.pathname + search + (search ? '&' : '?') + 'nocache=' + Math.floor(Math.random() * 100000));
-}
-
-const eraseData = async () => {
-    if (confirm('Please be aware that this will reset all your local data, including the Restore Points and backpack. Are you sure you want to continue?')) {
-        ;
-        localStorage.clear();
-        // We have to manually delete the databases due to Firefox not supporting indexedDB.databases(). WHYYYY???
-        indexedDB.deleteDatabase('TW_RestorePoints');
-        indexedDB.deleteDatabase('TW_Backpack');
-        location.reload();
-    }
-}
 
 const messages = defineMessages({
     defaultTitle: {
@@ -98,117 +83,6 @@ if (AddonChannels.changeChannel) {
 
 runAddons();
 
-const Footer = () => (
-    <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-            <div className={styles.footerText}>
-                <FormattedMessage
-                    // eslint-disable-next-line max-len
-                    defaultMessage="{APP_NAME} is not affiliated with TurboWarp, GarboMuffin, Scratch, the Scratch Team, or the Scratch Foundation."
-                    description="Disclaimer that LibreKitten is not connected to Scratch"
-                    id="tw.footer.disclaimer"
-                    values={{
-                        APP_NAME
-                    }}
-                />
-            </div>
-
-            <div className={styles.footerText}>
-                <FormattedMessage
-                    defaultMessage="Scratch is a project of the Scratch Foundation. It is available for free at {scratchDotOrg}."
-                    description="A disclaimer that Scratch requires when referring to Scratch. {scratchDotOrg} is a link with text 'https://scratch.org/'"
-                    id="tw.footer.scratchDisclaimer"
-                    values={{
-                        scratchDotOrg: (
-                            <a
-                                href="https://scratch.org/"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                {'https://scratch.org/'}
-                            </a>
-                        )
-                    }}
-                />
-            </div>
-
-            <div className={styles.footerColumns}>
-                <div className={styles.footerSection}>
-                    <a href="credits.html">
-                        <FormattedMessage
-                            defaultMessage="Credits"
-                            description="Credits link in footer"
-                            id="tw.footer.credits"
-                        />
-                    </a>
-                    <a /* </div>href="https://github.com/sponsors/GarboMuffin" */ style={{ cursor: 'not-allowed' }} title="Not available (yet)">
-                        <FormattedMessage
-                            defaultMessage="Donate"
-                            description="Donation link in footer"
-                            id="tw.footer.donate"
-                        />
-                    </a>
-                </div>
-                <div className={styles.footerSection}>
-                    <a href="https://desktop.turbowarp.org/">
-                        {/* Do not translate */}
-                        {'TurboWarp Desktop'}
-                    </a>
-                    <a href="https://packager.turbowarp.org/">
-                        {/* Do not translate */}
-                        {'TurboWarp Packager'}
-                    </a>
-                    <a href="https://docs.turbowarp.org/embedding">
-                        <FormattedMessage
-                            defaultMessage="Embedding"
-                            description="Link in footer to embedding documentation for embedding link"
-                            id="tw.footer.embed"
-                        />
-                    </a>
-                    <a href="https://docs.turbowarp.org/url-parameters">
-                        <FormattedMessage
-                            defaultMessage="URL Parameters"
-                            description="Link in footer to URL parameters documentation"
-                            id="tw.footer.parameters"
-                        />
-                    </a>
-                    <a href="https://docs.turbowarp.org/">
-                        <FormattedMessage
-                            defaultMessage="Documentation"
-                            description="Link in footer to additional documentation"
-                            id="tw.footer.documentation"
-                        />
-                    </a>
-                </div>
-                <div className={styles.footerSection}>
-                    <a href="https://scratch.mit.edu/discuss/topic/737994/">
-                        <FormattedMessage
-                            defaultMessage="Forum Topic"
-                            description="Link to forum topic"
-                            id="lk.topic"
-                        />
-                    </a>
-                    <a href="https://codeberg.org/LibreKitten/">
-                        <FormattedMessage
-                            defaultMessage="Source Code"
-                            description="Link to source code"
-                            id="tw.code"
-                        />
-                    </a>
-                    <a href="privacy.html">
-                        <FormattedMessage
-                            defaultMessage="Privacy Policy"
-                            description="Link to privacy policy"
-                            id="tw.privacy"
-                        />
-                    </a>
-                </div>
-            </div>
-            <p>Version: {process.env.npm_package_version} | <a onClick={eraseData} style={{ color: 'red' }}>Erase data</a></p>
-        </div>
-    </footer>
-);
-
 class Interface extends React.Component {
     constructor(props) {
         super(props);
@@ -226,7 +100,7 @@ class Interface extends React.Component {
             document.title = `${title} - ${APP_NAME}`;
         }
     }
-    render () {
+    render() {
         if (isInvalidEmbed) {
             return <InvalidEmbed />;
         }
@@ -263,6 +137,11 @@ class Interface extends React.Component {
                             enableSeeInside
                             onClickAddonSettings={handleClickAddonSettings}
                         />
+                        {canaryMode ? (
+                            <p className={styles.notice}>
+                                You are using Canary IDE, which can be unstable, <a href="https://librekitten.org/projects.html">click here to return to LibreKitten Stable</a>.
+                            </p>
+                        ) : null}
                     </div>
                 ) : null}
                 <div
