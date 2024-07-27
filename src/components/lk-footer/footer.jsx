@@ -120,9 +120,9 @@ const Footer = () => (
                     </a>
                 </div>
                 <div className={styles.footerSection}>
-                    <a href="https://forums.librekitten.org/">
+                    <a href="https://scratch.mit.edu/discuss/topic/772797/">
                         <FormattedMessage
-                            defaultMessage="Forums"
+                            defaultMessage="Forum Topic"
                             description="Link to forum topic"
                             id="lk.topic"
                         />
@@ -143,6 +143,27 @@ const Footer = () => (
                     </a>
                 </div>
             </div>
+            <div style={{ textAlign: 'center' }}>
+                <p>
+                    <em>Pspspsps! </em>
+                    <FormattedMessage
+                        defaultMessage="Like {appName}? Want to promote it? Add this badge to your website/forum signature/software forge profile."
+                        description="A disclaimer that Scratch requires when referring to Scratch. {scratchDotOrg} is a link with text 'https://scratch.org/'"
+                        id="lk.footer.badge"
+                        values={{
+                            appName: APP_NAME
+                        }}
+                    />
+                </p>
+                <p><a href="https://librekitten.org/"><img alt="LibreKitten - Code in blocks seriously" src="https://u.cubeupload.com/gl12/LibreKittenBadge.png" /></a></p>
+                <p><em>HTML</em></p>
+                <textarea contentEditable={false} value={'<a href="https://librekitten.org/"><img alt="LibreKitten - Code in blocks seriously" src="https://u.cubeupload.com/gl12/LibreKittenBadge.png"/></a>'}></textarea>
+                <p><em>BBCode</em></p>
+                <textarea contentEditable={false} value={'[url=https://librekitten.org/][img]https://u.cubeupload.com/gl12/LibreKittenBadge.png[/img][/url]'}></textarea>
+                <p><em>Markdown</em></p>
+                <textarea contentEditable={false} value={'[![LibreKitten - Code in blocks seriously](https://u.cubeupload.com/gl12/LibreKittenBadge.png)](https://librekitten.org/)'}></textarea>
+            </div>
+
             <p>Version: {process.env.npm_package_version} | <a onClick={eraseData} style={{ color: 'red' }}>Erase data</a></p>
         </div>
     </footer>

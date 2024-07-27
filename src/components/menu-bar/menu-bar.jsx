@@ -518,14 +518,14 @@ class MenuBar extends React.Component {
                                     place={this.props.isRtl ? 'left' : 'right'}
                                 >
                                     <MenuSection>
-                                        <MenuItemLink href="https://forums.librekitten.org/">
+                                        <MenuItemLink href="https://scratch.mit.edu/discuss/topic/772797/">
                                             <FormattedMessage
                                                 defaultMessage="Some scripts encountered errors."
                                                 description="Link in error menu"
                                                 id="tw.menuBar.reportError1"
                                             />
                                         </MenuItemLink>
-                                        <MenuItemLink href="https://forums.librekitten.org/">
+                                        <MenuItemLink href="https://scratch.mit.edu/discuss/topic/772797/">
                                             <FormattedMessage
                                                 defaultMessage="This is a bug. Please report it."
                                                 description="Link in error menu"
@@ -1011,19 +1011,19 @@ class MenuBar extends React.Component {
                         ) : []))}
                     </div>
                     {/* tw: add a feedback button
-                        lk: make that feedback button link to the LibreKitten forums.
+                        lk: make that feedback button link to the LibreKitten forum topic.
                     */}
                     <div className={styles.menuBarItem}>
                         <a
                             className={styles.feedbackLink}
-                            href="https://forums.librekitten.org/"
+                            href="https://scratch.mit.edu/discuss/topic/772797/"
                             rel="noopener noreferrer"
                             target="_blank"
                         >
                             {/* todo: icon */}
                             <Button className={styles.feedbackButton}>
                                 <FormattedMessage
-                                    defaultMessage="Go to {APP_NAME} Forums"
+                                    defaultMessage="{APP_NAME} forum topic (for feedback)"
                                     description="Button to give feedback in the menu bar"
                                     id="tw.feedbackButton"
                                     values={{
