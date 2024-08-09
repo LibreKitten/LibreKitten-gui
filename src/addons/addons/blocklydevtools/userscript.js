@@ -1,3 +1,6 @@
+import { basicSetup, EditorView } from 'codemirror';
+import { xml as xmlParser } from '@codemirror/lang-xml';
+
 export default async function ({ addon, console }) {
     while (true) { //Loop necessary for ScratchAddons
         await addon.tab.waitForElement("svg.blocklySvg>g.blocklyWorkspace", {
@@ -16,6 +19,9 @@ export default async function ({ addon, console }) {
 
         var workspace = Blockly.getMainWorkspace();
 
+        let editor;
+        let secondEditor;
+
         var dom = Blockly.Xml.workspaceToDom(workspace); //Export the workspace to a DOM representing the save XML.
         workspace.addChangeListener(() => { //Every time the workspace changes, update the dom variable.
             if (!document.querySelector("g.blocklyDraggable[data-id].blocklyInsertionMarker")) { //Blockly will try to serialise insertion markers, which will cause an internal crash.
@@ -25,7 +31,7 @@ export default async function ({ addon, console }) {
 
         const observerConfig = { childList: true, characterData: false, attributes: false, subtree: true }; //Config for MutationObservers.
 
-        const TabManager = { //Hacky fix to get the tab key working in the XML editor.
+        /* const TabManager = { //Hacky fix to get the tab key working in the XML editor.
             enableTab: function (keyEvent) { //Call with the key event and a string to insert at the text caret's position
                 if (keyEvent.keyCode === 9) {
                     // Insert tab at cursor position
@@ -73,7 +79,7 @@ export default async function ({ addon, console }) {
                     keyEvent.returnValue = false;
                 }
             }
-        };
+        }; */
 
         function firefoxSpacingFix(elem) { //Fix for firefox adding a \n at the end of every text node, which makes the editor feel janky.
             elem.childNodes.forEach(element => {
@@ -83,49 +89,91 @@ export default async function ({ addon, console }) {
             })
         }
 
-        function makeEditorContainer() {
-            var editor = document.createElement("div");
+        function makeEditorContainer(originalXml, secondary = false) {
+            var container = document.createElement("div");
 
-            editor.setAttribute("data-isblocklydeveditor", "true"); //Attribute to identify element as editor
-            editor.contentEditable = true; //Allow editing of content
+            container.setAttribute("data-isblocklydeveditor", "true"); //Attribute to identify element as editor
+            // editor.contentEditable = true; //Allow editing of content
 
             //Styling
-            editor.classList.add("sa-blocklyDevtoolsEditor");
-            editor.classList.add("sa-blocklyDevtoolsElement");
+            container.classList.add("sa-blocklyDevtoolsEditor");
+            container.classList.add("sa-blocklyDevtoolsElement");
 
-            //Disable spellcheck and autocomplete.
+            /* //Disable spellcheck and autocomplete.
             editor.setAttribute("autocomplete", "false");
-            editor.setAttribute("spellcheck", "false");
+            editor.setAttribute("spellcheck", "false");  */
+
+            if (secondary) {
+                //Set the editor's contents to the formatted original XML.
+                // container.innerHTML = formatXml(originalXml, true);
+                secondEditor = new EditorView({
+                    doc: originalXml ? formatXml(originalXml, false) : '',
+                    extensions: [basicSetup, xmlParser()],
+                    parent: container
+                })
+            } else {
+                //Set the editor's contents to the formatted original XML.
+                // container.innerHTML = formatXml(originalXml, true);
+                editor = new EditorView({
+                    doc: originalXml ? formatXml(originalXml, false) : '',
+                    extensions: [basicSetup, xmlParser()],
+                    parent: container
+                })
+            }
 
             //Prevent events from propagating to Blockly
-            editor.addEventListener("pointerdown", (event) => {
+            container.addEventListener("pointerdown", (event) => {
                 event.stopPropagation();
             }, {
                 capture: true
             });
-            editor.addEventListener("wheel", (event) => {
+            container.addEventListener("wheel", (event) => {
                 event.stopPropagation();
             }, {
                 capture: true
             });
-            editor.addEventListener("scroll", (event) => {
+            container.addEventListener("scroll", (event) => {
                 event.stopPropagation();
             }, {
                 capture: true
             });
-            editor.addEventListener("contextmenu", (event) => {
+            container.addEventListener("contextmenu", (event) => {
                 event.stopPropagation();
             }, {
                 capture: true
             });
-            editor.addEventListener("keydown", (event) => {
-                TabManager.enableTab(event); //Fix for tab key
+            container.addEventListener("keydown", (event) => {
+                event.stopPropagation();
+            }, {
+                capture: true
+            });
+            container.addEventListener("keypress", (event) => {
+                event.stopPropagation();
+            }, {
+                capture: true
+            });
+            container.addEventListener("keyup", (event) => {
+                event.stopPropagation();
+            }, {
+                capture: true
+            });
+            container.addEventListener("input", (event) => {
+                event.stopPropagation();
+            }, {
+                capture: true
+            });
+            container.addEventListener("copy", (event) => {
+                event.stopPropagation();
+            }, {
+                capture: true
+            });
+            container.addEventListener("paste", (event) => {
+                event.stopPropagation();
+            }, {
+                capture: true
+            });
 
-            }, {
-                capture: true
-            });
-
-            return editor;
+            return container;
         }
 
         //CSS would normally be injected here.
@@ -189,18 +237,13 @@ export default async function ({ addon, console }) {
             var originalXml = getXmlFromBlockId(blockId, dom); //Store the block's original, un-edited XML.
 
 
-            var container = makeEditorContainer(); //Create the editor
-
-            //Set the editor's contents to the formatted original XML.
-            container.innerHTML = formatXml(originalXml, true);
-            firefoxSpacingFix(container);
+            var container = makeEditorContainer(originalXml); //Create the editor
 
             var referencesVars = block.getVars(); //Array of variable ids referenced by block (directly)
             var editorVar = referencesVars[0]; //The variable to display
-            var secondaryEditor = makeEditorContainer(); //Create secondary editor
             var originalVarXml = editorVar ? getXmlFromVarId(editorVar, dom) : null;
+            var secondaryEditor = makeEditorContainer(originalVarXml, true); //Create secondary editor
 
-            secondaryEditor.innerHTML = originalVarXml ? formatXml(originalVarXml, true) : "";
             secondaryEditor.style.display = originalVarXml ? "block" : "none";
             firefoxSpacingFix(container);
 
@@ -213,16 +256,21 @@ export default async function ({ addon, console }) {
                 referencesVars = block.getVars();
                 editorVar = referencesVars[0] || false;
                 originalVarXml = editorVar ? getXmlFromVarId(editorVar, dom) : null;
-                if (originalVarXml) {
+                editor.dispatch({
+                    changes: { from: 0, to: editor.state.doc.length, insert: originalXml ? formatXml(originalXml, false) : '' }
+                });
+                secondEditor.dispatch({
+                    changes: { from: 0, to: secondEditor.state.doc.length, insert: originalVarXml ? formatXml(originalVarXml, false) : '' }
+                });
+                /* if (originalVarXml) {
                     secondaryEditor.innerHTML = formatXml(originalVarXml, true);
                     secondaryEditor.style.display = "block";
                     firefoxSpacingFix(container);
                 } else {
                     secondaryEditor.innerHTML = "";
                     secondaryEditor.style.display = "none";
-                }
-                container.innerHTML = formatXml(originalXml, true); //Update contents
-                firefoxSpacingFix(container);
+                } */
+                // container.innerHTML = formatXml(originalXml, true); //Update contents
             }
 
             workspace.addChangeListener(update); //Register change listener
@@ -232,13 +280,18 @@ export default async function ({ addon, console }) {
                 if (!xmlStr.includes(originalXml)) { //If the domn does not contain the original block XML, it is impossible to save changes.
                     throw new Error("Workspace XML does not contain block!");
                 }
-                xmlStr = xmlStr.replace(originalXml, container.textContent); //Replace original XML with modified XML.
+                xmlStr = xmlStr.replace(originalXml, editor.state.doc); //Replace original XML with modified XML.
                 if (originalVarXml) {
                     xmlStr = xmlStr.replace(originalVarXml, secondaryEditor.textContent);
                 }
                 //xmlStr = xmlStr.replace(/\u2003/g, "").replace(/\n/g, "");
                 xmlStr = xmlStr.replace(/\u00A0/g, "\u0020"); //Replace any non-breaking spaces with normal ones.
                 var tempDom = (Blockly.Xml.textToDom || Blockly.utils.xml.textToDom)(xmlStr);
+                try {
+                    tempDom.querySelector("parsererror");
+                } catch {
+                    return alert('There are errors in your code.');
+                }
                 if (tempDom.querySelector("parsererror")) {
                     tempDom.querySelectorAll("parsererror").forEach(err => {
                         var display = document.createElement("div");
@@ -276,7 +329,7 @@ export default async function ({ addon, console }) {
                 if (!internalBlock) {
                     return;
                 }
-                internalBlock.tooltip ||= internalBlock.type || "unknown"; //If the block does not have a tooltip, set it to it's opcode.
+                internalBlock.tooltip += '\nTechincal info: ' + (internalBlock.type || "unknown"); //If the block does not have a tooltip, set it to it's opcode.
                 const devWrapper = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject'); //Create a foreignObject element to allow HTML inside of SVG.
                 const btnWrapper = document.createElement("div"); //Wrapper for buttons to keep them on the same row
 
@@ -287,27 +340,27 @@ export default async function ({ addon, console }) {
                 btn.classList.add("sa-blocklyDevtoolsButton");
                 btn.classList.add("sa-blocklyDevtoolsElement");
                 btn.setAttribute("data-is-blocklydev-btn", "true");
-                btn.innerText = "✏️"; //📝✏️
+                btn.innerText = "✏️ Edit "; //📝✏️
 
                 const save = document.createElement("span"); //Create the save button
                 save.classList.add("sa-blocklyDevtoolsButton");
                 save.classList.add("sa-blocklyDevtoolsElement");
                 save.setAttribute("data-is-blocklydev-editor-btn", "true");
                 save.style.display = "none";
-                save.innerText = "💾";
+                save.innerText = "💾 Save ";
 
                 const collapse = document.createElement("span"); //Create the collapse/uncollapse button
                 collapse.classList.add("sa-blocklyDevtoolsButton");
                 collapse.classList.add("sa-blocklyDevtoolsElement");
                 collapse.setAttribute("data-is-blocklydev-editor-btn", "true");
                 collapse.style.display = "none";
-                collapse.innerText = "⬆️";
+                collapse.innerText = "⬆️ Collapse ";
 
                 const bin = document.createElement("span"); //Create the force delete button
                 bin.classList.add("sa-blocklyDevtoolsButton");
                 bin.classList.add("sa-blocklyDevtoolsElement");
                 bin.setAttribute("data-is-blocklydev-btn", "true");
-                bin.innerText = "🗑️";
+                bin.innerText = "🗑️ Force Delete ";
 
                 //Get the block's hull and calculate bounding box. Used to calculate where to position elements.
                 const path = getSvgPathFromBlock(element);
@@ -354,9 +407,12 @@ export default async function ({ addon, console }) {
                     event.stopPropagation();
                     event.preventDefault();
                     if (element.hasAttribute("data-id")) {
+                        editor?.destroy();
+                        secondEditor?.destroy();
                         blockId = element.getAttribute("data-id");
                         if (devWrapper.querySelector("div[data-isblocklydeveditor]")) { //If the editor exists, remove it.
                             devWrapper.querySelectorAll("div[data-isblocklydeveditor]").forEach(element => {
+
                                 element.remove();
                             });
                             save.style.display = "none";
@@ -397,9 +453,9 @@ export default async function ({ addon, console }) {
                             workspace.getBlockById(bId).setCollapsed(collapsed);
                         }
                         if (collapsed) { //Change button
-                            collapse.innerText = "⬇️";
+                            collapse.innerText = "⬇️ Uncollapse ";
                         } else {
-                            collapse.innerText = "⬆️";
+                            collapse.innerText = "⬆️ Collapse ";
                         }
                     }
                 }, {

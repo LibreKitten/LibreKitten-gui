@@ -1,5 +1,5 @@
 const manifest = {
-    "name": "Blockly Developer Tools",
+    "name": "Blockly Developer Tools (LibreKitten version)",
     "description": "Adds buttons next to blocks in the editor that allow you to collapse, force delete and modify their XML data.",
     "userscripts": [
       {
@@ -17,6 +17,10 @@ const manifest = {
       {
         "name": "ZXMushroom63",
         "link": "https://github.com/ZXMushroom63"
+      },
+      {
+        "name": "Forked by o97doge",
+        "link": "https://scratch.mit.edu/users/o97doge"
       }
     ],
     "info": [
