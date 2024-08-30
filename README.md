@@ -7,6 +7,7 @@ Based on [TurboWarp's source code](https://github.com/TurboWarp/scratch-gui).
 LibreKitten is a block-based visual programming language that is designed to make spontaneously programming enjoyable.
 
 ## Setup
+**You must use a Linux distribution, MacOS, or Windows Subsystem for Linux to setup LibreKitten. Windows doesn't work.**
 
 See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp/LibreKitten environment.
 
