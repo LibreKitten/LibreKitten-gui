@@ -9,7 +9,6 @@ import {getIsLoadingWithId} from '../../reducers/project-state';
 import topBlock from './top-block.svg';
 import middleBlock from './middle-block.svg';
 import bottomBlock from './bottom-block.svg';
-import {notScratchDesktop} from '../../lib/isScratchDesktop';
 
 import { tip } from '../../lib/randomUnhelpfulTip';
 

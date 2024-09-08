@@ -81,10 +81,6 @@
       .splash-reset:disabled {
         opacity: 0.8;
       }
-
-      .splash-pride-month {
-        max-width: 350px;
-      }
     </style>
   </head>
   <body>
@@ -153,13 +149,11 @@
         var splashErrorTitle = document.querySelector('.splash-error-title');
         var splashError = document.querySelector('.splash-errors');
         var splashReset = document.querySelector('.splash-reset');
-        var splashPrideMonth = document.querySelector('.splash-pride-month');
 
         var totalErrors = 0;
         window.onerror = function (event, source, line, col, err) {
           if (++totalErrors > 5) return; // dont bother logging more
           splashErrorTitle.hidden = splashError.hidden = splashReset.hidden = false;
-          splashPrideMonth.hidden = true;
           var el = document.createElement('div');
           el.textContent = 'Error (splash) in ' + source + ' (' + line + ':' + col + '): ' + err;
           splashError.appendChild(el);
