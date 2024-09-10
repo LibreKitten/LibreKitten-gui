@@ -118,6 +118,7 @@ class Blocks extends React.Component {
             'handleBlocksInfoUpdate',
             'onTargetsUpdate',
             'onVisualReport',
+            'onErrorGlow',
             'onWorkspaceUpdate',
             'onWorkspaceMetricsChange',
             'setBlocks',
@@ -165,6 +166,8 @@ class Blocks extends React.Component {
             Blocks.defaultOptions
         );
         this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
+        // lk: hacky way to enable prodecures by default
+        this.handleEnableProcedureReturns();
         AddonHooks.blocklyWorkspace = this.workspace;
 
         // Register buttons under new callback keys for creating variables,
@@ -362,6 +365,7 @@ class Blocks extends React.Component {
         this.props.vm.addListener('BLOCK_GLOW_ON', this.onBlockGlowOn);
         this.props.vm.addListener('BLOCK_GLOW_OFF', this.onBlockGlowOff);
         this.props.vm.addListener('VISUAL_REPORT', this.onVisualReport);
+        this.props.vm.addListener('ERROR_GLOW', this.onErrorGlow);
         this.props.vm.addListener('workspaceUpdate', this.onWorkspaceUpdate);
         this.props.vm.addListener('targetsUpdate', this.onTargetsUpdate);
         this.props.vm.addListener('MONITORS_UPDATE', this.handleMonitorsUpdate);
@@ -376,6 +380,7 @@ class Blocks extends React.Component {
         this.props.vm.removeListener('BLOCK_GLOW_ON', this.onBlockGlowOn);
         this.props.vm.removeListener('BLOCK_GLOW_OFF', this.onBlockGlowOff);
         this.props.vm.removeListener('VISUAL_REPORT', this.onVisualReport);
+        this.props.vm.removeListener('ERROR_GLOW', this.onErrorGlow);
         this.props.vm.removeListener('workspaceUpdate', this.onWorkspaceUpdate);
         this.props.vm.removeListener('targetsUpdate', this.onTargetsUpdate);
         this.props.vm.removeListener('MONITORS_UPDATE', this.handleMonitorsUpdate);
@@ -436,6 +441,14 @@ class Blocks extends React.Component {
     onVisualReport (data) {
         this.workspace.reportValue(data.id, data.value);
     }
+    onErrorGlow (data) {
+        if (!data.id) {
+            return this.workspace.getAllBlocks().forEach((block) => {
+                block.setGlowError(data.glow);
+            });
+        };
+        this.workspace.getBlockById(data.id).setGlowError(data.glow);
+    };
     getToolboxXML () {
         // Use try/catch because this requires digging pretty deep into the VM
         // Code inside intentionally ignores several error situations (no stage, etc.)

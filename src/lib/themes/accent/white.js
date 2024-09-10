@@ -1,12 +1,12 @@
 const guiColors = {
-    'motion-primary': 'rgba(0, 0, 0, 1)',
-    'motion-primary-transparent': 'rgba(0, 0, 0, 0.9)',
-    'motion-tertiary': 'rgba(0, 0, 0, 1)',
+    'motion-primary': '#013ea8',
+    'motion-primary-transparent': '#013ea8e6',
+    'motion-tertiary': '#012d7a',
 
-    'looks-secondary': 'rgba(0, 0, 0, 1)',
-    'looks-transparent': 'rgba(20, 0, 0, 0.35)',
-    'looks-light-transparent': 'hgba(0, 0, 0, 0.15)',
-    'looks-secondary-dark': 'rgba(0, 0, 0, 1)',
+    'looks-secondary': '#013ea8',
+    'looks-transparent': '#013ea859',
+    'looks-light-transparent': '#013ea826',
+    'looks-secondary-dark': 'rgba(218, 99, 98, 1)',
     'error-primary': 'rgba(255, 0, 0, 1)',
 
     'menu-bar-background': 'rgba(255, 255, 255, 1)',
