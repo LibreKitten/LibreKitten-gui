@@ -33,7 +33,7 @@ steps:
     secrets: [cbtoken]
     commands:
       # Am i even allowed to do this?
-      - apt-get update && apt-get install python3 default-jre-headless --no-install-recommends -y
+      - apt-get update && apt-get install pypy3 default-jre-headless --no-install-recommends -y
       # Avoid permission denied errors
       - chmod -R a+w .
       # Set up git in a working way
