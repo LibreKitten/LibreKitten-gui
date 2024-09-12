@@ -52,6 +52,7 @@ steps:
       # Run build stage
       - npm install pnpm -g
       - pnpm install --shamefully-hoist
+      - pnpm up scratch-blocks scratch-vm
       - pnpm run prepublish
       - CANARY_MODE=true pnpm run ci-build
       # Only needed for custom domains
