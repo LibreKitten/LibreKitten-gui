@@ -41,6 +41,7 @@ const base = {
         // allows ROUTING_STYLE=wildcard to work properly
         historyApiFallback: {
             rewrites: [
+                {from: /^\/\d+\/\/?$/, to: '/'},
                 {from: /^\/\d+\/projects\/?$/, to: '/projects.html'},
                 {from: /^\/\d+\/fullscreen\/?$/, to: '/fullscreen.html'},
                 {from: /^\/\d+\/editor\/?$/, to: '/editor.html'},
@@ -154,7 +155,8 @@ module.exports = [
             'embed': './src/playground/embed.jsx',
             'addon-settings': './src/playground/addon-settings.jsx',
             'credits': './src/playground/credits/credits.jsx',
-            'not_found': './src/playground/not_found/not_found.jsx'
+            'not_found': './src/playground/not_found/not_found.jsx',
+            'index': './src/playground/index/index.jsx'
         },
         output: {
             path: path.resolve(__dirname, 'build')
@@ -243,6 +245,14 @@ module.exports = [
                 template: 'src/playground/simple.ejs',
                 filename: 'not_found.html',
                 title: `404 - ${APP_NAME}`,
+                noSplash: true,
+                ...htmlWebpackPluginCommon
+            }),
+            new HtmlWebpackPlugin({
+                chunks: ['index'],
+                template: 'src/playground/simple.ejs',
+                filename: 'index.html',
+                title: `Home - ${APP_NAME}`,
                 noSplash: true,
                 ...htmlWebpackPluginCommon
             }),

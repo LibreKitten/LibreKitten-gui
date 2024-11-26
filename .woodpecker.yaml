@@ -59,6 +59,7 @@ steps:
       #- cp domains _site/.domains
       # Push to target
       - cd build
+      - echo "canary.librekitten.org" > .domains
       - git add --all
       - git commit -m "Woodpecker CI Build at $( env TZ=America/Chicago date +"%Y-%m-%d %X %Z" )"
       - git push -u origin main
