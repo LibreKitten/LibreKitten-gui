@@ -29,6 +29,11 @@ a {
     text-align: center;
     margin-bottom: 30px;
 }
+
+.header-container a {
+    color: white;
+}
+
 .header-text {
 
 }

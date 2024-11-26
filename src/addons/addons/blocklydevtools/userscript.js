@@ -124,53 +124,33 @@ export default async function ({ addon, console }) {
             //Prevent events from propagating to Blockly
             container.addEventListener("pointerdown", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("wheel", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("scroll", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("contextmenu", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("keydown", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("keypress", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("keyup", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("input", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("copy", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
             container.addEventListener("paste", (event) => {
                 event.stopPropagation();
-            }, {
-                capture: true
             });
 
             return container;
@@ -327,7 +307,13 @@ export default async function ({ addon, console }) {
                 var blockId = element.getAttribute("data-id"); //Get the id
                 var internalBlock = workspace.getBlockById(blockId); //Get the internal block object
                 if (!internalBlock) {
-                    return;
+                    // Try reloading the workspace first.
+                    workspace = Blockly.getMainWorkspace();
+                    var internalBlock = workspace.getBlockById(blockId); //Get the internal block object
+                    if (!internalBlock) {
+                        console.log('Not a Blockly block: ' + blockId)
+                        return;
+                    }
                 }
                 internalBlock.tooltip += '\nTechincal info: ' + (internalBlock.type || "unknown"); //If the block does not have a tooltip, set it to it's opcode.
                 const devWrapper = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject'); //Create a foreignObject element to allow HTML inside of SVG.

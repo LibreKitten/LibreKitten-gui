@@ -10,7 +10,7 @@ import { APP_NAME } from '../../lib/brand';
 import { applyGuiColors } from '../../lib/themes/guiHelpers';
 import { detectTheme } from '../../lib/themes/themePersistance';
 import UserData from './users';
-import MenuBar from '../../components/menu-bar/menu-bar.jsx';
+import Header from '../../components/lk-header/header.jsx';
 import Footer from '../../components/lk-footer/footer.jsx';
 
 import librekitty from './purring-librekitty-with-love-heart.svg'
@@ -61,9 +61,7 @@ UserList.propTypes = {
 
 const Credits = () => (
     <main className={styles.main}>
-        <MenuBar
-            onClickAddonSettings={() => {}}
-        />
+        <Header />
         <header className={styles.headerContainer}>
             <h1 className={styles.headerText}>
                 {APP_NAME} Credits
@@ -71,8 +69,14 @@ const Credits = () => (
         </header>
         <section>
             <p>
-                The {APP_NAME} project is made possible by TurboWarp and Scratch, thank you.
+                The {APP_NAME} project is made possible by TurboWarp and Scratch. To them, thank you.
                 Without them, coding would have been less accessible to people, and people would have had to learn confusing languages with syntax errors as their first programming language.
+            </p>
+            <p>
+                <i>
+                    Individual contributors are listed in no particular order.
+                    The order is randomized each visit.
+                </i>
             </p>
         </section>
         {APP_NAME !== 'LibreKitten' && (
@@ -105,6 +109,10 @@ const Credits = () => (
                     Donate to support Scratch.
                 </a>
             </p>
+        </section>
+        <section>
+            <h2>Icon</h2>
+            The current icon is a vectorized version of an icon contributed by <a href="https://scratch.mit.edu/users/Eason_9/">Eason_9</a> from a <a href="https://scratch.mit.edu/discuss/post/8154030/">forum post</a>.
         </section>
         <section>
             <h2>Contributors</h2>
@@ -140,22 +148,14 @@ const Credits = () => (
             <p>
                 <img
                     src={librekitty}
-                    alt='The Librekitty (cat) purring with a love heart.'
+                    alt='The Librekitty (ginger ailuromorphic/cat-shaped being) purring with a love heart.'
                 />
             </p>
             <i>The  Librekitty purring from your usage of LibreKitten.</i>
             <p>- The Librekitty.</p>
-            <p>
-                <i>
-                    Individual contributors are listed in no particular order.
-                    The order is randomized each visit.
-                </i>
-            </p>
         </section>
         <Footer />
     </main>
 );
 
-const WrappedCredits = compose(AppStateHOC)(Credits);
-
-render(< WrappedCredits />);
+render(<Credits />);

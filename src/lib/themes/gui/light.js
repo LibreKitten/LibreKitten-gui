@@ -59,6 +59,8 @@ const guiColors = {
     'menu-bar-background-image': 'none',
     'menu-bar-foreground': '#ffffff',
 
+    'navbar-background': 'var(--looks-secondary)', /* lk: added nav bar colour */
+
     'assets-background': '#ffffff',
 
     'input-background': '#ffffff',
