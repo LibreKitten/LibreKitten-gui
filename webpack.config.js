@@ -175,11 +175,11 @@ module.exports = [
             ])
         },
         optimization: {
-            minimizer: [
+            /* minimizer: [
                 new EsbuildPlugin({
                     target: 'es2020'
                 })
-            ],
+            ], */
             splitChunks: {
                 chunks: 'all',
                 minChunks: 2,
