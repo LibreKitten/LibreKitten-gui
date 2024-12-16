@@ -145,10 +145,12 @@ const Footer = () => (
             </div>
             <div style={{ textAlign: 'center' }}>
                 <p>
-                    <em>Pspspsps! </em>
+                    <strong>
+                        <em>Pspspsps! </em>
+                    </strong>
                     <FormattedMessage
-                        defaultMessage="Like {appName}? Want to promote it? Add this badge to your website/forum signature/software forge profile."
-                        description="A disclaimer that Scratch requires when referring to Scratch. {scratchDotOrg} is a link with text 'https://scratch.org/'"
+                        defaultMessage="Like {appName}? Want to promote it? Add this badge to your website/forum signature/software forge profile. It would help build a community around {appName}!"
+                        description="A message that if they like {appName}, to promote it."
                         id="lk.footer.badge"
                         values={{
                             appName: APP_NAME

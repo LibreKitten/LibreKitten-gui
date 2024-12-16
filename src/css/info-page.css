@@ -1,11 +1,12 @@
 @import "./colors.css";
+@import "./typography.css";
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: $font-family;
     margin: 0;
     padding: 0;
     background: $page-background;

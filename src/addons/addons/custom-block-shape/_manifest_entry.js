@@ -21,7 +21,7 @@ const manifest = {
       "link": "https://scratch.mit.edu/users/GarboMuffin/"
     }
   ],
-  "enabledByDefault": true,
+  "enabledByDefault": false,
   "dynamicDisable": true,
   "userscripts": [
     {

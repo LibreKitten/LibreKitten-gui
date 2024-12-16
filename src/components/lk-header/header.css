@@ -1,6 +1,7 @@
 @import "../../css/colors.css";
 @import "../../css/units.css";
 @import "../../css/z-index.css";
+@import "../../css/typography.css";
 
 .header {
     display: flex;
@@ -25,7 +26,7 @@
      *        but fixes [FFx + Safari] [resize window down + scroll to the right] bug.
      *        width: 100%;
      */
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: $font-family;
     font-size: $menu-bar-standard-font-size;
     font-weight: bold;
     background-color: $navbar-background;

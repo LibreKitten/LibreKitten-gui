@@ -50,6 +50,7 @@ const BLOCKS_MAP = {
         colors: blocksThree.blockColors,
         extensions: blocksThree.extensions,
         customExtensionColors: {},
+        customBlockColors: blocksThree.customBlockColors,
         useForStage: true
     },
     [BLOCKS_HIGH_CONTRAST]: {
@@ -57,6 +58,7 @@ const BLOCKS_MAP = {
         colors: defaultsDeep({}, blocksHighContrast.blockColors, defaultBlockColors),
         extensions: blocksHighContrast.extensions,
         customExtensionColors: blocksHighContrast.customExtensionColors,
+        customBlockColors: blocksHighContrast.customExtensionColors,
         useForStage: true
     },
     [BLOCKS_DARK]: {
@@ -64,6 +66,7 @@ const BLOCKS_MAP = {
         colors: defaultsDeep({}, blocksDark.blockColors, defaultBlockColors),
         extensions: blocksDark.extensions,
         customExtensionColors: blocksDark.customExtensionColors,
+        customBlockColors: blocksDark.customExtensionColors,
         useForStage: false
     },
     [BLOCKS_CUSTOM]: {
@@ -145,6 +148,10 @@ class Theme {
 
     getCustomExtensionColors() {
         return BLOCKS_MAP[this.blocks].customExtensionColors;
+    }
+
+    getCustomBlockColors() {
+        return BLOCKS_MAP[this.blocks].customBlockColors;
     }
 }
 

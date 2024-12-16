@@ -20,7 +20,8 @@ class CustomProcedures extends React.Component {
         ]);
         this.state = {
             rtlOffset: 0,
-            warp: false
+            warp: false,
+            color: '#FF8200'
         };
     }
     componentWillUnmount () {
@@ -150,6 +151,12 @@ class CustomProcedures extends React.Component {
                 onCancel={this.handleCancel}
                 onOk={this.handleOk}
                 onToggleWarp={this.handleToggleWarp}
+                setColor={(val) => {
+                    this.setState({ color: val });
+                    this.mutationRoot.setColourExternal(val);
+
+                }}
+                color={this.state.color}
             />
         );
     }

@@ -20,13 +20,12 @@ const messages = defineMessages({
 
 // lk: added custom colors
 
-const CustomColor = () => {
-    const [color, setColor] = useState('#FF6680');
+const CustomColor = props => {
     return (
         <input
             type="color"
-            value={color}
-            onChange={e => setColor(e.target.value)}
+            value={props.color}
+            onChange={e => props.setColor(e.target.value)}
         />
     );
 }
@@ -130,17 +129,19 @@ const CustomProcedures = props => (
                     />
                 </label>
             </div>
-            {/* <br/>
+            <br/>
             <label>
-                    <hr/>
-                    <CustomColor/>
-                    <FormattedMessage
-                        defaultMessage="Custom block color"
-                        description="Label for colour input to set a custom color"
-                        id="lk.customProcedures.customColor"
-                    />
+                <hr/>
+                <CustomColor
+                    setColor={props.setColor}
+                    color={props.color}
+                />
+                <FormattedMessage
+                    defaultMessage="Custom block color"
+                    description="Label for colour input to set a custom color"
+                    id="lk.customProcedures.customColor"
+                />
                 </label>
-            */}
             <Box className={styles.buttonRow}>
                 <button
                     className={styles.cancelButton}

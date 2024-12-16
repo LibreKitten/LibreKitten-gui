@@ -1,3 +1,5 @@
+import {hex2hsv, hsv2hex} from '../../tw-color-utils';
+
 const blockColors = {
     motion: {
         primary: '#4C97FF',
@@ -126,7 +128,25 @@ const blockColors = {
 
 const extensions = {};
 
+const customBlockColors = {
+    primary: primary => primary,
+    secondary: primary => {
+        const hsv = hex2hsv(primary);
+        hsv[2] = Math.max(hsv[2] - 10, 20);
+        return hsv2hex(hsv);
+    },
+    tertiary: primary => {
+        const hsv = hex2hsv(primary);
+        hsv[2] = Math.max(hsv[2] - 40, 70);
+        return hsv2hex(hsv);
+    },
+    quaternary: primary => customBlockColors.tertiary(primary),
+    categoryIconBackground: primary => customBlockColors.primary(primary),
+    categoryIconBorder: primary => customBlockColors.tertiary(primary)
+};
+
 export {
     blockColors,
-    extensions
+    extensions,
+    customBlockColors
 };

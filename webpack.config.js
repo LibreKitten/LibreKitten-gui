@@ -32,10 +32,17 @@ const CACHE_EPOCH = 'gleba';
 const base = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     devtool: process.env.SOURCEMAP || (process.env.NODE_ENV === 'production' ? false : 'cheap-module-source-map'),
+    snapshot: {
+        unmanagedPaths: [
+            /^(.+?[\\/]node_modules[\\/]scratch-[^\\/]+)[\\/]/
+        ]
+    },
     devServer: {
-        contentBase: path.resolve(__dirname, 'build'),
+        /* static: {
+            directory: path.resolve(__dirname, 'build'),
+        }, */
         host: '0.0.0.0',
-        disableHostCheck: true,
+        // disableHostCheck: true,
         compress: true,
         port: process.env.PORT || 8601,
         // allows ROUTING_STYLE=wildcard to work properly
@@ -48,7 +55,11 @@ const base = {
                 {from: /^\/\d+\/embed\/?$/, to: '/embed.html'},
                 {from: /^\/addons\/?$/, to: '/addons.html'}
             ]
-        }
+        },
+        hot: false
+    },
+    watchOptions: {
+        followSymlinks: true
     },
     output: {
         library: 'GUI',
@@ -57,6 +68,8 @@ const base = {
         publicPath: root
     },
     resolve: {
+        fullySpecified: false,
+        extensions: ['.ts', '.js'],
         symlinks: false,
         alias: {
             'text-encoding$': path.resolve(__dirname, 'src/lib/tw-text-encoder'),
@@ -65,8 +78,8 @@ const base = {
     },
     module: {
         rules: [{
-            test: /\.jsx?$/,
-            loader: 'babel-loader',
+            test: /\.[tj]sx?$/,
+            loader: 'esbuild-loader',
             include: [
                 path.resolve(__dirname, 'src'),
                 /node_modules[\\/]scratch-[^\\/]+[\\/]src/,
@@ -74,14 +87,7 @@ const base = {
                 /node_modules[\\/]@vernier[\\/]godirect/
             ],
             options: {
-                // Explicitly disable babelrc so we don't catch various config
-                // in much lower dependencies.
-                babelrc: false,
-                plugins: [
-                    ['react-intl', {
-                        messagesDir: './translations/messages/'
-                    }]],
-                presets: ['@babel/preset-env', '@babel/preset-react']
+                target: 'es2020'
             }
         },
         {

@@ -20,7 +20,7 @@
     "prune": "./prune-gh-pages.sh",
     "i18n:push": "tx-push-src scratch-editor interface translations/en.json",
     "i18n:src": "rimraf ./translations/messages/src && babel src > tmp.js && rimraf tmp.js && build-i18n-src ./translations/messages/src ./translations/",
-    "start": "webpack-dev-server",
+    "start": "webpack serve",
     "test": "npm run test:lint && npm run test:unit && npm run build && npm run test:integration",
     "test:integration": "jest --maxWorkers=4 test[\\\\/]integration",
     "test:lint": "eslint . --ext .js,.jsx",
@@ -28,8 +28,7 @@
     "test:smoke": "jest --runInBand test[\\\\/]smoke",
     "watch": "webpack --colors --watch",
     "release": "git push origin develop && npm run build && neocities push build",
-    "tauri": "tauri",
-    "dev": "vite serve"
+    "tauri": "tauri"
   },
   "config": {
     "commitizen": {
@@ -121,9 +120,9 @@
     "@babel/preset-react": "7.14.5",
     "@tauri-apps/cli": "^1.5.14",
     "@vitejs/plugin-react": "^4.3.1",
-    "babel-core": "7.0.0-bridge.0",
+    "babel-core": "6.26.3",
     "babel-eslint": "10.1.0",
-    "babel-loader": "8.3.0",
+    "babel-loader": "9.2.1",
     "chromedriver": "117.0.3",
     "ejs": "^3.1.10",
     "enzyme": "3.10.0",
@@ -152,9 +151,9 @@
     "vite-plugin-commonjs": "^0.10.1",
     "vite-plugin-html": "^3.2.2",
     "web-audio-test-api": "0.5.2",
-    "webpack": "4.47.0",
-    "webpack-cli": "3.3.12",
-    "webpack-dev-server": "3.11.2",
+    "webpack": "5.96.1",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "5.1.0",
     "yauzl": "2.10.0"
   },
   "jest": {

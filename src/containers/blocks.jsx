@@ -143,6 +143,17 @@ class Blocks extends React.Component {
 
         this.ScratchBlocks.FieldColourSlider.activateEyedropper_ = this.props.onActivateColorPicker;
         this.ScratchBlocks.Procedures.externalProcedureDefCallback = this.props.onActivateCustomProcedures;
+        // lk: Added coloured custom blocks.
+        // Basically, this function is so we can theme custom blocks.
+        // Self is Blockly.Block
+        this.ScratchBlocks.ScratchBlocks.ProcedureUtils.renderColourExternal = (self) => {
+            if (!(self.procColour_ && self.procColour_ !== 'null')) return;
+            const theme = this.props.theme;
+            const colors = theme.getCustomBlockColors();
+            const myColor = self.procColour_;
+            self.setColour(colors.primary(myColor), colors.secondary(myColor), colors.tertiary(myColor), colors.quaternary(myColor));
+        };
+
         this.ScratchBlocks.ScratchMsgs.setLocale(this.props.locale);
 
         const Msg = this.ScratchBlocks.Msg;
