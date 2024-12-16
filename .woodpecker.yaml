@@ -54,7 +54,7 @@ steps:
       - pnpm install --shamefully-hoist
       - pnpm up scratch-blocks scratch-vm
       - pnpm run prepublish
-      - CANARY_MODE=true pnpm run ci-build
+      - NODE_ENV=production CANARY_MODE=true pnpm run ci-build
       # Only needed for custom domains
       #- cp domains _site/.domains
       # Push to target
