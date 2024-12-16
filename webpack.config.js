@@ -74,6 +74,10 @@ const base = {
         alias: {
             'text-encoding$': path.resolve(__dirname, 'src/lib/tw-text-encoder'),
             'scratch-render-fonts$': path.resolve(__dirname, 'src/lib/tw-scratch-render-fonts')
+        },
+        fallback: {
+            // I really don't feel like forking another repository today.
+            'buffer': require.resolve('buffer'),
         }
     },
     module: {
@@ -143,6 +147,9 @@ const base = {
                     force: true
                 }
             ]
+        }),
+        new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer']
         })
     ]
 };
@@ -181,11 +188,12 @@ module.exports = [
             ])
         },
         optimization: {
-            /* minimizer: [
+            minimizer: [
                 new EsbuildPlugin({
-                    target: 'es2020'
+                    target: 'es2020',
+                    minify: true
                 })
-            ], */
+            ],
             splitChunks: {
                 chunks: 'all',
                 minChunks: 2,
