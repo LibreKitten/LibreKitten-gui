@@ -52,14 +52,13 @@ steps:
       # Run build stage
       - npm install pnpm -g
       - pnpm install --shamefully-hoist
-      - pnpm up scratch-blocks scratch-vm
       - pnpm run prepublish
-      - NODE_ENV=production CANARY_MODE=true pnpm run ci-build
+      - NODE_ENV=production run ci-build
       # Only needed for custom domains
       #- cp domains _site/.domains
       # Push to target
       - cd build
-      - echo "canary.librekitten.org" > .domains
+      - echo "librekitten.org" > .domains
       - git add --all
       - git commit -m "Woodpecker CI Build at $( env TZ=America/Chicago date +"%Y-%m-%d %X %Z" )"
       - git push -u origin main
