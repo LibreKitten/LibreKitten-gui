@@ -6,7 +6,7 @@ import InlineMessages from '../../containers/inline-messages.jsx';
 import SB3Downloader from '../../containers/sb3-downloader.jsx';
 import {filterInlineAlerts} from '../../reducers/alerts';
 
-import styles from './save-status.css';
+import MenuLabel from './tw-menu-label.jsx';
 
 const TWSaveStatus = ({
     alertsList,
@@ -21,9 +21,8 @@ const TWSaveStatus = ({
             showSaveFilePicker={showSaveFilePicker}
         >
             {(_className, _downloadProjectCallback, {smartSave}) => (
-                <div
-                    onClick={smartSave}
-                    className={styles.saveNow}
+                <MenuLabel
+                    onOpen={smartSave}
                 >
                     {fileHandle ? (
                         <FormattedMessage
@@ -41,7 +40,7 @@ const TWSaveStatus = ({
                             id="gui.menuBar.downloadToComputer"
                         />
                     )}
-                </div>
+                </MenuLabel>
             )}
         </SB3Downloader>
     ));

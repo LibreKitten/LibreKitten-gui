@@ -489,7 +489,7 @@ class MenuBar extends React.Component {
                 <div className={styles.mainMenu}>
                     <div className={styles.fileGroup}>
                         <a href="/">
-                            <MenuLabel>
+                            <MenuLabel onOpen={() => {}}>
                                 <img width="32px" height="32px" src={logoIcon} />
                             </MenuLabel>
                         </a>
