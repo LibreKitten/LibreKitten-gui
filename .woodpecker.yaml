@@ -30,7 +30,9 @@ steps:
       event: [push]
     # Use the official jekyll build container
     image: node
-    secrets: [cbtoken]
+    environment:
+      CBTOKEN:
+        from_secret: cbtoken
     commands:
       # Am i even allowed to do this?
       - apt-get update && apt-get install pypy3 default-jre-headless --no-install-recommends -y
