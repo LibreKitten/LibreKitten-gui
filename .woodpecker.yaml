@@ -27,7 +27,8 @@
 steps:
   - name: build
     when:
-      event: [push]
+      - event: push
+        branch: develop
     # Use the official jekyll build container
     image: node
     environment:
