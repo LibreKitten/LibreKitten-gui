@@ -4,6 +4,8 @@ This also adds a website.
 
 Based on [TurboWarp's source code](https://github.com/TurboWarp/scratch-gui).
 
+You can view this code on [Codeberg (preferred)](https://codeberg.org/LibreKitten/LibreKitten-gui) or [GitHub](https://github.com/LibreKitten/LibreKitten-gui).
+
 LibreKitten is a block-based visual programming language that is designed to make spontaneously programming enjoyable.
 
 ## Setup
