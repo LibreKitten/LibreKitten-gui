@@ -176,5 +176,14 @@
     "webpack@4.47.0": {
       "terser-webpack-plugin": "^4.2.3"
     }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "chromedriver",
+      "core-js",
+      "esbuild",
+      "fsevents",
+      "scratch-blocks"
+    ]
   }
 }
