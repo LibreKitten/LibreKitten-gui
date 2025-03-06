@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Push to Codeberg
+      uses: yesolutions/mirror-action@v0.7.0
+      with:
+        # The remote repository e.g. https://github.com/octocat/foo.git or git@github.com:octocat/foo.git
+        REMOTE: https://codeberg.org/LibreKitten/LibreKitten-gui
+        # Username for remote repository
+        GIT_USERNAME: ${{ secrets.CB_USERNAME }}
+        # The git HTTPS password or token for the remote repository
+        GIT_PASSWORD: ${{ secrets.CB_GIT_TOKEN }}
+          
