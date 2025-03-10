@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import MenuLabel from './tw-menu-label.jsx';
 import InlineMessages from '../../containers/inline-messages.jsx';
 
 import {
@@ -12,8 +13,6 @@ import {
 import {
     filterInlineAlerts
 } from '../../reducers/alerts';
-
-import styles from './save-status.css';
 
 // Wrapper for inline messages in the nav bar, which are all related to saving.
 // Show any inline messages if present, else show the "Save Now" button if the
@@ -28,16 +27,15 @@ const SaveStatus = ({
     filterInlineAlerts(alertsList).length > 0 ? (
         <InlineMessages />
     ) : projectChanged && (
-        <div
-            className={styles.saveNow}
-            onClick={onClickSave}
+        <MenuLabel
+            onOpen={onClickSave}
         >
             <FormattedMessage
                 defaultMessage="Save Now"
                 description="Title bar link for saving now"
                 id="gui.menuBar.saveNowLink"
             />
-        </div>
+        </MenuLabel>
     ));
 
 SaveStatus.propTypes = {

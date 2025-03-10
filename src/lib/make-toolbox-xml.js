@@ -460,7 +460,7 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
-        <!-- <block type="control_default"/> -->
+        <block type="control_default"/>
         <block type="control_break"/>
         <block id="wait_until" type="control_wait_until"/>
         <block id="repeat_until" type="control_repeat_until"/>

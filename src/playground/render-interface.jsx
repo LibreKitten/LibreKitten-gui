@@ -17,11 +17,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { FormattedMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
-import { getIsLoading } from '../reducers/project-state.js';
-import DOMElementRenderer from '../containers/dom-element-renderer.jsx';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
+import {FormattedMessage, defineMessages, injectIntl, intlShape} from 'react-intl';
+import {getIsLoading} from '../reducers/project-state.js';
 import AppStateHOC from '../lib/app-state-hoc.jsx';
 import ErrorBoundaryHOC from '../lib/error-boundary-hoc.jsx';
 import TWProjectMetaFetcherHOC from '../lib/tw-project-meta-fetcher-hoc.jsx';

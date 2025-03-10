@@ -57,8 +57,8 @@ const fetchLibrary = async () => {
         iconURL: `https://extensions.turbowarp.org/${extension.image || 'images/unknown.svg'}`,
         tags: ['tw'],
         credits: [
-            ...(extension.by || []),
-            ...(extension.original || [])
+            ...(extension.original || []),
+            ...(extension.by || [])
         ].map(credit => {
             if (credit.link) {
                 return (

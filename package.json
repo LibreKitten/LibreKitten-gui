@@ -38,6 +38,7 @@
   "dependencies": {
     "@codemirror/lang-xml": "^6.1.0",
     "@microbit/microbit-universal-hex": "0.2.2",
+    "@turbowarp/jszip": "^3.11.1",
     "@turbowarp/nanolog": "^0.2.0",
     "@turbowarp/scratch-l10n": "^3.1001.202405101234",
     "@turbowarp/scratch-storage": "^0.0.202403251715",
@@ -120,6 +121,7 @@
     "@babel/preset-env": "7.14.8",
     "@babel/preset-react": "7.14.5",
     "@tauri-apps/cli": "^1.5.14",
+    "@types/react": "^16.14.0",
     "@vitejs/plugin-react": "^4.3.1",
     "babel-core": "6.26.3",
     "babel-eslint": "10.1.0",
@@ -128,7 +130,7 @@
     "ejs": "^3.1.10",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.7",
-    "esbuild-loader": "^4.1.0",
+    "esbuild-loader": "^4.2.2",
     "eslint": "8.55.0",
     "eslint-config-scratch": "9.0.3",
     "eslint-import-resolver-webpack": "0.11.1",
@@ -176,5 +178,13 @@
       "terser-webpack-plugin": "^4.2.3"
     }
   },
-  "packageManager": "pnpm@9.3.0"
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "chromedriver",
+      "core-js",
+      "esbuild",
+      "fsevents",
+      "scratch-blocks"
+    ]
+  }
 }
