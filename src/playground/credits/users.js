@@ -52,6 +52,11 @@ const contributors = [
         username: 'dumo',
         img: 'https://codeberg.org/avatars/c9a451e80c5aa5e03f70fa22950f60d7cad58af959a604e2964df079bf818cdd?size=80',
         url: 'https://codeberg.org/dumo'
+    },
+    {
+        username: 'aec',
+        img: 'https://codeberg.org/avatars/54f7140b31fcdbdcc97d02b556b8e81b84768c2423e23b85f1a61e0684c28b03?size=80',
+        url: 'https://codeberg.org/aec'
     }
 ].map(fromHardcoded);
 
